@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import errorcode
 import configparser
 import pandas as pd
+import os
 
 def create_database(cursor, DB_NMAE):
     try:
@@ -45,12 +46,13 @@ def create_table (cursor, table_name):
 
 # Import connection data from an external config.ini file (not in repository)
 config = configparser.ConfigParser()
-config.read('~/Docs/insight/api/config.ini')
+config.read('../../../api/config.ini')
 DB_NAME = config.get('connections', 'DB_NAME')
 USER_NAME = config.get('connections', 'DB_USER')
 PWD = config.get('connections', 'DB_PWD')
 HOST_NAME = config.get('connections','DB_HOST')
 PORT = config.get('connections', 'DB_PORT')
+
 
 # Establish Connection to Remote Database
 cnx = mysql.connector.connect(user = USER_NAME,
@@ -59,22 +61,25 @@ cnx = mysql.connector.connect(user = USER_NAME,
 cursor = cnx.cursor(buffered = True)
 locate_database(cursor, DB_NAME)
 
+
 # Create Table for Leaderboard Top 500
 csv = pd.read_csv('../../data/processed/dataforazeroth_complete_player_stats_500.csv')
-fields = []
-sizes = []
+fields = csv.columns
+sizes = ['varchar(100)']*len(csv.columns)
 
-sql = "CREATE TABLE fft ("
+sql = "CREATE TABLE leaderboards ("
 i = 0
 for field in fields:
-    if i == 0:
+    if i == 1:
         sql = sql + field + ' ' + sizes[i]
-    else:
-        sql = sql + ', ' + field + ' ' + sizes[i]
+    elif i > 1 and i <= 16:
+         sql = sql + ', ' + field + ' ' + sizes[i]
+    elif i > 16:
+        sql = sql + ', ' + 'a_' + field + ' ' + sizes[i]
     i = i + 1
 sql = sql + ') engine=innodb default charset=utf8;'
 
-print (sql)
+print (len(csv.columns))
 
-#cursor.execute(sql)
-#cnx.commit()
+cursor.execute(sql)
+cnx.commit()

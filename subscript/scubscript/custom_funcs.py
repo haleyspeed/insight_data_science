@@ -1,21 +1,30 @@
 import requests
-import configparser
 import json
 import pandas as pd
 from bs4 import BeautifulSoup, SoupStrainer
 import httplib2
 import numpy as np
+import os
+import wget
+import glob
+import csv
+import config
+
 
 def unpack_json(txt):
+    """Function to format a json page for parsing"""
     unpacked = json.loads(txt)
     return unpacked
 
+
 def get_access_token (blizzard_key, blizzard_secret):
+    """Get access token to access the blizzard API"""
     r = requests.post('https://us.battle.net/oauth/token', data={'grant_type': 'client_credentials'},
                   auth=(blizzard_key, blizzard_secret))
     unpacked = unpack_json(r.text)
     access_token = unpacked['access_token']
     return access_token
+
 
 def get_wowprogress_rank_list(rank_list_name, locale, base_url,df):
     """Downloads guild rankings for each realm provided"""
@@ -67,10 +76,7 @@ def get_wowprogress_by_realm (locale, namespace,base_url):
                 if realm in link and 'us_' in link[:3]:
                     print('Downloading: ' + link)
                     get_wowprogress_rank_list(link, locale, base_url,df)
-# Get achievement Data
-locale = 'en_US'
-namespace = 'static-us'
-access_token = get_access_token(blizzard_key, blizzard_secret)
+
 
 def get_wow_achievements_category(namespace, locale):
     directory = 'data/wow/achievement-category/index'
@@ -89,7 +95,8 @@ def get_wow_achievements_category(namespace, locale):
     return df
 
 
-def get_wow_achievement_category(achievement_id, namespace, locale):
+def get_wow_achievement_category(achievement_id, namespace, locale, access_token):
+    """Retrieves achievement catefory from the Blizzard API"""
     directory = 'data/wow/achievement/'
     url = 'https://us.api.blizzard.com/' + directory + str(achievement_id) +'?namespace=' + namespace + \
           '&locale=' + locale + '&access_token=' + access_token
@@ -100,6 +107,7 @@ def get_wow_achievement_category(achievement_id, namespace, locale):
 
 
 def get_wow_achievement_list (namespace, locale):
+    """Retrieves the total achievement list from the Blizard API"""
     directory = 'data/wow/achievement/index'
     url = 'https://us.api.blizzard.com/'+ directory +'?namespace='+ namespace + \
       '&locale=' + locale + '&access_token='+ access_token
@@ -115,6 +123,7 @@ def get_wow_achievement_list (namespace, locale):
 
 
 def get_wow_realms_list (namespace, locale):
+    """Retrieves a list of reams and their ids using the Blizzard API"""
     directory = 'data/wow/realm/index'
     url = 'https://us.api.blizzard.com/' + directory + '?namespace=' + namespace + \
           '&locale=' + locale + '&access_token=' + access_token
@@ -145,6 +154,8 @@ def get_mythic_dungeon_leaderboard_instances (realm_id, namespace, locale, acces
 
 
 def get_mythic_keystone_dungeon_leaderboard(realm_id,namespace,locale, instance, period):
+    """Retrieves the leaderboard information for a mythic using the Blizzard API.
+    Player information not included in recent data. Leads to an error."""
     directory = 'data/wow/connected-realm/'
     url = 'https://us.api.blizzard.com/' + directory + str(realm_id) + '/mythic-leaderboard/' + str(instance) + \
           '/period/' + str(period) + '?namespace=' + namespace + \
@@ -220,6 +231,7 @@ def get_mythic_keystone_dungeon_leaderboard(realm_id,namespace,locale, instance,
 
 
 def get_wow_profile (realm, player, token):
+    """Retrievesthe public profile for a player using the Blizzard API"""
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm \
           + '/' + player + '?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -236,6 +248,7 @@ def get_wow_profile (realm, player, token):
     return row
 
 def get_guild_roster (realm, guild, access_token):
+    "Retrieves the list of players in a guild using the Blizzard API"
     url = 'https://us.api.blizzard.com/data/wow/guild/'+ realm \
           + '/' + guild + '/roster?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -250,6 +263,7 @@ def get_guild_roster (realm, guild, access_token):
     return row
 
 def get_player_achievements(player,realm, row):
+    "Retrieves achievements for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm \
           + '/' + player + '/achievements?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -275,6 +289,7 @@ def get_player_achievements(player,realm, row):
 
 
 def get_wow_mounts (player, realm, access_token):
+    "Retrieves number of mounts collected for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + \
           player + '/collections/mounts?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -288,6 +303,7 @@ def get_wow_mounts (player, realm, access_token):
         return np.nan
 
 def get_wow_pets (player, realm, access_token):
+    "Retrieves number of pets collected for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player + \
           '/collections/pets?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -302,6 +318,7 @@ def get_wow_pets (player, realm, access_token):
 
 
 def get_wow_quests (player, realm, access_token):
+    "Retrieves quest completion for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player \
             + '/quests/completed?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -316,6 +333,7 @@ def get_wow_quests (player, realm, access_token):
 
 
 def get_wow_honor (player, realm, access_token):
+    "Retrieves honor level for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player + \
           '/pvp-summary?namespace=profile-us&locale=en_US&access_token=' + access_token
     r = requests.get(url)
@@ -328,3 +346,37 @@ def get_wow_honor (player, realm, access_token):
             return np.nan
     else:
         return np.nan
+
+
+def csv_concatenator (folder):
+    """Reads in a directory then sequentially adds the concatenates the
+    csv files in that directory"""
+    df = pd.DataFrame()
+    os.chdir (folder)
+    for f in glob.glob('*{}'.format('csv')):
+        print(f)
+        df = df.append(pd.read_csv(f))
+    return df
+
+def super_big_csv_concatenator (dir_in, dir_out):
+    """Reads in a directory then sequentially adds the concatenates the
+    csv files in that directory"""
+    f_out = open('../../data/processed/player_stats.csv', "w")
+    writer = csv.writer(f_out)
+    i = 0
+    for f in glob.glob('../../../datasets/player_stats/*{}'.format('csv')):
+        df = pd.read_csv(f)
+        if i == 0:
+            writer.writerow(df.columns)
+        print(f)
+        for row in df.itertuples():
+            writer.writerow(row)
+        i = i + 1
+    f_out.close()
+
+
+def dataset_cleaner (f):
+    """Removes empty rows and duplicate rows from a csv file"""
+    df = pd.read_csv(f)
+    df = df.drop_duplicates()
+    return df

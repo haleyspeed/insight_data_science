@@ -9,6 +9,7 @@ import wget
 import glob
 import csv
 import config
+import configparser
 
 
 def unpack_json(txt):
@@ -95,15 +96,51 @@ def get_wow_achievements_category(namespace, locale):
     return df
 
 
-def get_wow_achievement_category(achievement_id, namespace, locale, access_token):
+def get_wow_achievement_category(cat_id):
     """Retrieves achievement catefory from the Blizzard API"""
-    directory = 'data/wow/achievement/'
-    url = 'https://us.api.blizzard.com/' + directory + str(achievement_id) +'?namespace=' + namespace + \
-          '&locale=' + locale + '&access_token=' + access_token
-    r = requests.get(url)
-    unpacked = unpack_json(r.text)
-    achievement_category = unpacked['category']
-    return achievement_category['name'], unpacked['points']
+    f_config = '/Users/haleyspeed/Docs/insight/api/config.ini'
+    config = configparser.ConfigParser()
+    config.read(f_config)
+    blizzard_key = config.get('KEYS', 'blizzard')
+    blizzard_secret = config.get('KEYS', 'blizzard_secret')
+    access_token = get_access_token(blizzard_key, blizzard_secret)
+    url = 'https://us.api.blizzard.com/data/wow/achievement-category/' + \
+          str(cat_id)+'?namespace=static-us&locale=en_US&access_token=' + access_token
+    try:
+        r = requests.get(url)
+        if r.status_code == 200:
+            unpacked = unpack_json(r.text)
+            achievement_category = unpacked['category']
+            return achievement_category['name'], unpacked['points']
+    except:
+        return 'error'
+
+
+def get_wow_achievement(achievement_id):
+    f_config = '/Users/haleyspeed/Docs/insight/api/config.ini'
+    config = configparser.ConfigParser()
+    config.read(f_config)
+    blizzard_key = config.get('KEYS', 'blizzard')
+    blizzard_secret = config.get('KEYS', 'blizzard_secret')
+    access_token = get_access_token(blizzard_key, blizzard_secret)
+    """Retrieves achievement catefory from the Blizzard API"""
+    url = 'https://us.api.blizzard.com/data/wow/achievement/' + \
+          str(achievement_id)+'?namespace=static-us&locale=en_US&access_token=' + access_token
+    try:
+        r = requests.get(url)
+        if r.status_code == 200:
+            unpacked = unpack_json(r.text)
+            results = {'achievement_name' : unpacked['name'],
+                       'achievement_id': unpacked['id'],
+                        'category_name': unpacked['category']['name'],
+                        'category_id': unpacked['category']['id'],
+                        'criteria_id': unpacked['criteria']['id'],
+                        'criteria_name': unpacked['criteria']['description'],
+                        'next_name': unpacked['next_achievement']['name'],
+                        'next_id': unpacked['next_achievement']['id']}
+            return results
+    except:
+        return 'error'
 
 
 def get_wow_achievement_list (namespace, locale):

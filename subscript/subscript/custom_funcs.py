@@ -123,24 +123,38 @@ def get_wow_achievement(achievement_id):
     blizzard_key = config.get('KEYS', 'blizzard')
     blizzard_secret = config.get('KEYS', 'blizzard_secret')
     access_token = get_access_token(blizzard_key, blizzard_secret)
-    """Retrieves achievement catefory from the Blizzard API"""
+    """Retrieves achievement category from the Blizzard API"""
     url = 'https://us.api.blizzard.com/data/wow/achievement/' + \
           str(achievement_id)+'?namespace=static-us&locale=en_US&access_token=' + access_token
-    try:
-        r = requests.get(url)
-        if r.status_code == 200:
-            unpacked = unpack_json(r.text)
-            results = {'achievement_name' : unpacked['name'],
-                       'achievement_id': unpacked['id'],
-                        'category_name': unpacked['category']['name'],
-                        'category_id': unpacked['category']['id'],
-                        'criteria_id': unpacked['criteria']['id'],
-                        'criteria_name': unpacked['criteria']['description'],
-                        'next_name': unpacked['next_achievement']['name'],
-                        'next_id': unpacked['next_achievement']['id']}
-            return results
-    except:
-        return 'error'
+    r = requests.get(url)
+    if r.status_code == 200:
+        unpacked = unpack_json(r.text)
+        results = {'achievement_name' : unpacked['name'],
+                    'achievement_id': unpacked['id'],
+                    'category_name': unpacked['category']['name'],
+                    'category_id': unpacked['category']['id'],
+                    'criteria_id': '',
+                    'criteria_name': '',
+                    'next_name': '',
+                    'next_id': ''}
+        try:
+            results['criteria_id'] = unpacked['criteria']['id']
+        except:
+            print("unpacked['criteria']['id'] does not exist")
+        try:
+            results['criteria_name'] = unpacked['criteria']['name']
+        except:
+            print("unpacked['criteria']['name'] does not exist")
+        try:
+            results['next_id'] = unpacked['next_achievement']['id']
+        except:
+            print("unpacked['next_achievement']['id'] does not exist")
+        try:
+            results['next_name'] = unpacked['next_achievement']['name']
+        except:
+            print("unpacked['next_achievement']['name'] does not exist")
+        return results
+
 
 
 def get_wow_achievement_list (namespace, locale):

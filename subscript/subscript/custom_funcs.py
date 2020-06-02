@@ -409,13 +409,13 @@ def csv_concatenator (folder):
         df = df.append(pd.read_csv(f))
     return df
 
-def super_big_csv_concatenator (dir_in, dir_out):
+def super_big_csv_concatenator (dir_in, dir_out, start):
     """Reads in a directory then sequentially adds the concatenates the
     csv files in that directory"""
-    f_out = open('../../data/processed/player_stats.csv', "w")
+    f_out = open('../../data/processed/player_stats' + '_'+ str(start) +'.csv', "w")
     writer = csv.writer(f_out)
     i = 0
-    for f in glob.glob('../../../datasets/player_stats/*{}'.format('csv')):
+    for f in glob.glob('../../../datasets/player_stats/*{}'.format('csv'))[start:start+20]:
         df = pd.read_csv(f)
         if i == 0:
             writer.writerow(df.columns)
@@ -423,6 +423,7 @@ def super_big_csv_concatenator (dir_in, dir_out):
         for row in df.itertuples():
             writer.writerow(row)
         i = i + 1
+
     f_out.close()
 
 

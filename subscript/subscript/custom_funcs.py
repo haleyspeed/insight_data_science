@@ -10,6 +10,9 @@ import glob
 import csv
 import config
 import configparser
+import gzip
+import xlrd
+import datetime
 
 
 def unpack_json(txt):
@@ -27,13 +30,43 @@ def get_access_token (blizzard_key, blizzard_secret):
     return access_token
 
 
+def dataforazeroth (dir_dataset):
+    date_cols = []
+    os.chdir(dir_dataset)
+    files = os.listdir()
+    csv_files = glob.glob('*.{}'.format('csv'))
+    df = pd.DataFrame()
+    for f in csv_files:
+        temp = pd.read_csv(f)
+        temp.columns = ['ranking','leaderboard','player','guild','realm','score']
+        temp.leaderboard = f.split('wow_')[1].split('.csv')[0]
+        df = df.append(temp[['ranking','leaderboard','player','guild','realm']], ignore_index=True)
+    df.to_csv('../dataforazeroth_complete_dataset.csv')
+    return df
+
+
+def xlsx_to_csv (dir_xlsx):
+    os.chdir(dir_xlsx)
+    files = os.listdir()
+    xlsx_files = glob.glob('*.{}'.format('xlsx'))
+    for f in xlsx_files:
+        wb = xlrd.open_workbook(f)
+        sh = wb.sheet_by_name('Sheet1')
+        csv_name = f.replace('xlsx','csv')
+        f_csv = open(csv_name, 'w', encoding='utf8')
+        wr = csv.writer(f_csv, quoting=csv.QUOTE_ALL)
+        for rownum in range(sh.nrows):
+            wr.writerow(sh.row_values(rownum))
+        f_csv.close()
+
+
 def get_wowprogress_rank_list(rank_list_name, locale, base_url,df):
     """Downloads guild rankings for each realm provided"""
     url = base_url + rank_list_name
     tar_file = wget.download(url)
 
 
-def unpack_wowprogress_guild_ranks():
+def unpack_wowprogress_guild_ranks(locale):
     """Reads all the .gz files in the current working directory and extracts the
     data as JSON. Data is parsed and collated into a single dataframe."""
     files = os.listdir()
@@ -47,7 +80,7 @@ def unpack_wowprogress_guild_ranks():
             tmp = pd.DataFrame()
             with gzip.open(tarfile, 'rb') as f:
                 json_text = f.read()
-            unpacked = bapi.unpack_json(json_text)
+            unpacked = unpack_json(json_text)
             for guild in unpacked:
                 tmp = tmp.append(guild, ignore_index=True)
                 tmp['tier'] = tier
@@ -313,7 +346,7 @@ def get_guild_roster (realm, guild, access_token):
               guild_name = guild, faction = guild_faction)
     return row
 
-def get_player_achievements(player,realm, row):
+def get_player_achievements(player,realm, row, access_token):
     "Retrieves achievements for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm \
           + '/' + player + '/achievements?namespace=profile-us&locale=en_US&access_token=' + access_token
@@ -326,10 +359,9 @@ def get_player_achievements(player,realm, row):
             for achievement in unpacked['achievements']:
                 try:
                     if str(achievement['id']) in row.keys():
-                        if achievement['criteria']['is_completed'] == True:
-                            row[str(achievement['id'])] = 1
-                        else:
-                            row[str(achievement['id'])] = 0
+                        row[str(achievement['id'])] = datetime.datetime.utcfromtimestamp((int(achievement['completed_timestamp'])/1000)).strftime('%Y-%m-%d')
+                    else:
+                        row[str(achievement['id'])] = 'none'
                 except:
                     continue
             return row
@@ -409,13 +441,13 @@ def csv_concatenator (folder):
         df = df.append(pd.read_csv(f))
     return df
 
-def super_big_csv_concatenator (dir_in, dir_out, start):
+def super_big_csv_concatenator (file_in, file_out):
     """Reads in a directory then sequentially adds the concatenates the
     csv files in that directory"""
-    f_out = open('../../data/processed/player_stats' + '_'+ str(start) +'.csv', "w")
+    f_out = open(file_out, "w")
     writer = csv.writer(f_out)
     i = 0
-    for f in glob.glob('../../../datasets/player_stats/*{}'.format('csv'))[start:start+20]:
+    for f in glob.glob(file_in.format('csv')):
         df = pd.read_csv(f)
         if i == 0:
             writer.writerow(df.columns)
@@ -423,7 +455,6 @@ def super_big_csv_concatenator (dir_in, dir_out, start):
         for row in df.itertuples():
             writer.writerow(row)
         i = i + 1
-
     f_out.close()
 
 
@@ -432,3 +463,47 @@ def dataset_cleaner (f):
     df = pd.read_csv(f)
     df = df.drop_duplicates()
     return df
+
+
+def achievement_patch_scraper (achievement_id):
+    url = 'https://www.wowhead.com/achievement=' + str(achievement_id)
+    http = httplib2.Http()
+    patch = ''
+    attained_by = ''
+    status, response = http.request(url)
+    for scripts in BeautifulSoup(response, parse_only=SoupStrainer('script'), features="lxml"):
+        if '[li]Added in patch' in str(scripts):
+            patch = str(scripts).split("patch ")[1].split("[\\")[0]
+            try:
+                attained_by = str(scripts).split("Attained by ")[1].split("%")[0]
+            except:
+                continue
+    return patch, attained_by
+
+
+def patch_date_scraper (patch_id):
+    patch = 'Patch_'+ patch_id[:5]
+    release_date = ''
+    url = 'https://wow.gamepedia.com/' + patch
+    http = httplib2.Http()
+    status, response = http.request(url)
+    for scripts in BeautifulSoup(response, parse_only=SoupStrainer('td'), features="lxml"):
+        if 'Release date' in str(scripts):
+            release_date = str(scripts.next_sibling).split("<p>")[1].split("\n")[0]
+    return release_date
+
+def get_validation(player, realm, access_token):
+    "Retrieves quest completion for a player using the Blizzard API"
+    url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player \
+          + '?namespace=profile-us&locale=en_US&access_token=' + access_token
+    r = requests.get(url)
+    if r.status_code == 200:
+        try:
+            unpacked = json.loads(r.text)
+            last_login = datetime.datetime.utcfromtimestamp((int(unpacked['last_login_timestamp'])/1000)).strftime('%Y-%m-%d')
+            gear_score = unpacked['equipped_item_level']
+            return last_login, gear_score
+        except:
+            return ['','']
+    else:
+        return ['','']

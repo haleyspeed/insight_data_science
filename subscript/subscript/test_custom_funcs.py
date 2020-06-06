@@ -12,13 +12,12 @@ import numpy as np
 
 # Test concatenation of player stats csvs into one
 # large csv
-home_dir = config.home_dir
-data_dir = '/Users/haleyspeed/Docs/insight/datasets/player_stats'
-dir_out = config.processed_dir
-dir_in = os.path.join(data_dir, 'datasets', 'player_stats')
-for start in np.arange(1580,4766,20):
-    print(start)
-    cf.super_big_csv_concatenator (dir_in, dir_out, start)
+#home_dir = config.home_dir
+dir_in = os.path.join(config.processed_dir, 'wow_ach_time')
+dir_out = config.clean_dir
+file_in = os.path.join(dir_in, '*{}')
+file_out = os.path.join(dir_out,'player_stats_subset.csv')
+cf.super_big_csv_concatenator (file_in, file_out)
 
 
 # Test data cleaning
@@ -27,3 +26,7 @@ for start in np.arange(1580,4766,20):
 #f_out = os.path.join(config.clean_dir, f_name)
 #df = cf.dataset_cleaner(f_in)
 #df.to_csv(f_out)
+
+
+#print(cf.achievement_patch_scraper (11546))
+#print(cf.patch_date_scraper ('7.2.0'))

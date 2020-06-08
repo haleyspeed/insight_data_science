@@ -13,10 +13,17 @@ import numpy as np
 # Test concatenation of player stats csvs into one
 # large csv
 #home_dir = config.home_dir
+<<<<<<< HEAD
+dir_in = os.path.join(config.processed_dir)
+dir_out = config.clean_dir
+file_in = os.path.join(dir_in, '*{}')
+file_out = os.path.join(dir_out,'raw_player_stats.csv')
+=======
 dir_in = os.path.join(config.processed_dir, 'wow_ach_time')
 dir_out = config.clean_dir
 file_in = os.path.join(dir_in, '*{}')
 file_out = os.path.join(dir_out,'player_stats_subset.csv')
+>>>>>>> 652b680204ce2295cbd00167ac9e169d137d8113
 cf.super_big_csv_concatenator (file_in, file_out)
 
 

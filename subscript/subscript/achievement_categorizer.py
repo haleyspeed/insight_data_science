@@ -3,14 +3,14 @@ import pandas as pd
 import numpy as np
 import os
 
-f_in = 'player_stats_0.csv'
+
 dir_clean = config.clean_dir
 dir_processed = config.processed_dir
 dir_raw = config.raw_dir
 
 # Read in player stats and achievements to dataframes
 print('Loading data...')
-df_ps = pd.read_csv(os.path.join(dir_processed, f_in))
+df_ps = pd.read_csv(os.path.join(dir_processed, '6-8_scrapes', f_in))
 
 # Make sure there is a unique ID column in the player_stats data
 print('Checking unique ids....')
@@ -28,10 +28,7 @@ df_cat = pd.read_csv(os.path.join(dir_raw, 'wow_achievement_categories.csv'))
 df_ach = pd.read_csv(os.path.join(dir_clean, 'achievement_details_list.csv'))
 
 # base_cols contains leaderboard player stats columns without achievements
-base_cols = ['level', 'guild_rank','player', 'id', 'realm', 'realm_id',
-        'playable_race', 'playable_class', 'faction', 'guild_name', 'completed_quests',
-        'honor_level','mounts_collected','pets_collected','total_achievement_points',
-        'total_achievements']
+base_cols = ['player', 'id', 'realm']
 category_cols = list(df_cat.id.values.astype(int).astype(str))
 engineered_cols = base_cols + category_cols
 ach_ids = df_ps.columns.difference(base_cols) # Keeps only the numeric achievement_id Columns
@@ -43,9 +40,7 @@ df_ach.achievement_id = df_ach.achievement_id.astype(int).astype(str)
 # Do this once. It takes ~7 hours for 1500 players
 # Make a new, empty dataframe with player info and achievement categories
 df_ps_cat = pd.DataFrame(columns=engineered_cols)
-i = 0
-start = 0
-end = 10
+i = 201
 
 print('Categorizing achievements....')
 for index, row in df_ps.iterrows():

@@ -8,16 +8,13 @@ import glob
 
 # Setup IO
 f_cat = os.path.join(cn.clean_dir,'achievement_details_list.csv')
-folder = cn.processed_dir
+folder = os.path.join(cn.processed_dir)
 
 # Read in the list of categories with achievements
 dfc = pd.read_csv(f_cat)
 
 # Define output file columns
-player_cols = ['faction', 'guild_name', 'guild_rank', 'id', 'playable_class',
-              'playable_race','player', 'realm', 'realm_id', 'total_achievements',
-              'total_achievement_points', 'mounts_collected', 'pets_collected','completed_quests',
-              'honor_level', 'gear_score', 'last_login', 'time_since_login','engagement_score']
+player_cols = ['player', 'realm', 'gear_score', 'last_login', 'time_since_login']
 categories = [name.lower() for name in np.unique(dfc.category_name)]
 months = np.arange(1, 13)
 years = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
@@ -56,7 +53,7 @@ for f in glob.glob('*{}'.format('csv')):
     for index, row in dfr.iterrows():
 
         # Format output file
-        f_out = os.path.join(cn.clean_dir, f.replace('raw', 'processed'))
+        f_out = os.path.join(cn.clean_dir, f.replace('wow', 'cat_counts'))
 
         # Convert date to month
         row[achievement_cols] = [str(d)[0:7] for d in row[achievement_cols]]
@@ -92,9 +89,9 @@ for f in glob.glob('*{}'.format('csv')):
         c = c.drop(['achievement', 'category'])
 
         # Get dates per category
-        d = d.groupby('category')['date'].apply(list).reset_index().transpose()
-        d.columns = [col.lower() for col in d.iloc[0][:]]
-        d = d.iloc[1:][:]
+        #d = d.groupby('category')['date'].apply(list).reset_index().transpose()
+        #d.columns = [col.lower() for col in d.iloc[0][:]]
+        #d = d.iloc[1:][:]
 
         # Create a new row to append to dfo
         tmp = dict()
@@ -108,8 +105,8 @@ for f in glob.glob('*{}'.format('csv')):
             tmp[col.lower()] = t[col.lower()].achievement
 
         # Add category per month data to the output row
-        for col in d.columns.values:
-            tmp[col.lower()] = d[col.lower()].date
+        #for col in d.columns.values:
+        #    tmp[col.lower()] = d[col.lower()].date
 
         add_categories = [add for add in dfo.columns.values if add not in tmp.keys()]
         for add in add_categories:
@@ -119,4 +116,4 @@ for f in glob.glob('*{}'.format('csv')):
 
         i = i + 1
         print(i)
-        dfo.to_csv(f_out)
+    dfo.to_csv(f_out)

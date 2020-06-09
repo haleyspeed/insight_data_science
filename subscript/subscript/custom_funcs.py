@@ -358,12 +358,12 @@ def get_player_achievements(player,realm, row, access_token):
             row['total_achievement_points'] = unpacked['total_points']
             for achievement in unpacked['achievements']:
                 try:
-                    if str(achievement['id']) in row.keys():
+                    if achievement['criteria']['is_completed'] == True:
                         row[str(achievement['id'])] = datetime.datetime.utcfromtimestamp((int(achievement['completed_timestamp'])/1000)).strftime('%Y-%m-%d')
                     else:
                         row[str(achievement['id'])] = 'none'
                 except:
-                    continue
+                    row[str(achievement['id'])] = 'none'
             return row
         except:
             return 'error'

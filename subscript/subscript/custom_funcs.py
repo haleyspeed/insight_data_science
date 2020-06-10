@@ -159,7 +159,10 @@ def get_wow_achievement(achievement_id):
     """Retrieves achievement category from the Blizzard API"""
     url = 'https://us.api.blizzard.com/data/wow/achievement/' + \
           str(achievement_id)+'?namespace=static-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        pass
     if r.status_code == 200:
         unpacked = unpack_json(r.text)
         results = {'achievement_name' : unpacked['name'],
@@ -195,7 +198,10 @@ def get_wow_achievement_list (namespace, locale):
     directory = 'data/wow/achievement/index'
     url = 'https://us.api.blizzard.com/'+ directory +'?namespace='+ namespace + \
       '&locale=' + locale + '&access_token='+ access_token
-    r = requests.get (url)
+    try:
+        r = requests.get(url)
+    except:
+        pass
     unpacked = unpack_json (r.text)
     df = pd.DataFrame()
     for i, achievement in enumerate(unpacked['achievements']):
@@ -211,7 +217,10 @@ def get_wow_realms_list (namespace, locale):
     directory = 'data/wow/realm/index'
     url = 'https://us.api.blizzard.com/' + directory + '?namespace=' + namespace + \
           '&locale=' + locale + '&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        pass
     unpacked = unpack_json(r.text)
     realm_names = []
     realm_ids = []
@@ -228,7 +237,10 @@ def get_mythic_dungeon_leaderboard_instances (realm_id, namespace, locale, acces
     directory = 'data/wow/connected-realm/' + str(realm_id) + '/mythic-leaderboard/index'
     url = 'https://us.api.blizzard.com/' + directory + '?namespace=' + namespace + \
           '&locale=' + locale + '&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        pass
     unpacked = unpack_json(r.text)
     current_leaderboards = unpacked['current_leaderboards']
     df = pd.DataFrame()
@@ -244,7 +256,10 @@ def get_mythic_keystone_dungeon_leaderboard(realm_id,namespace,locale, instance,
     url = 'https://us.api.blizzard.com/' + directory + str(realm_id) + '/mythic-leaderboard/' + str(instance) + \
           '/period/' + str(period) + '?namespace=' + namespace + \
           '&locale=' + locale + '&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        pass
     unpacked = unpack_json(r.text)
     features = ['period', 'period_start_timestamp', 'period_end_timestamp', 'map_challenge_mode_id',
                'map_challenge_mode_name', 'map_name', 'map_id', 'connected_realm', 'keystone_affix_names',
@@ -318,7 +333,10 @@ def get_wow_profile (realm, player, token):
     """Retrievesthe public profile for a player using the Blizzard API"""
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm \
           + '/' + player + '?namespace=profile-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        pass
     unpacked = unpack_json(r.text)
     row = dict(id = unpacked['id'], name = unpacked['name'], gender = unpacked['gender']['name'],
           faction = unpacked['faction']['name'], race = unpacked['race']['name'],
@@ -350,7 +368,10 @@ def get_player_achievements(player,realm, row, access_token):
     "Retrieves achievements for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm \
           + '/' + player + '/achievements?namespace=profile-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        return 'error'
     if r.status_code == 200:
         try:
             unpacked = unpack_json(r.text)
@@ -375,7 +396,10 @@ def get_wow_mounts (player, realm, access_token):
     "Retrieves number of mounts collected for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + \
           player + '/collections/mounts?namespace=profile-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        return np.nan
     if r.status_code == 200:
         try:
             unpacked = json.loads(r.text)
@@ -389,7 +413,10 @@ def get_wow_pets (player, realm, access_token):
     "Retrieves number of pets collected for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player + \
           '/collections/pets?namespace=profile-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        return np.nan
     if r.status_code == 200:
         try:
             unpacked = json.loads(r.text)
@@ -404,7 +431,10 @@ def get_wow_quests (player, realm, access_token):
     "Retrieves quest completion for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player \
             + '/quests/completed?namespace=profile-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        return np.nan
     if r.status_code == 200:
         try:
             unpacked = json.loads(r.text)
@@ -419,7 +449,10 @@ def get_wow_honor (player, realm, access_token):
     "Retrieves honor level for a player using the Blizzard API"
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm + '/' + player + \
           '/pvp-summary?namespace=profile-us&locale=en_US&access_token=' + access_token
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except:
+        return np.nan
 
     if r.status_code == 200:
         try:
@@ -439,7 +472,7 @@ def csv_concatenator (folder):
     for f in glob.glob('*{}'.format('csv')):
         print(f)
         df = df.append(pd.read_csv(f))
-    return df
+    return df, f
 
 def super_big_csv_concatenator (file_in, file_out):
     """Reads in a directory then sequentially adds the concatenates the
@@ -507,3 +540,46 @@ def get_validation(player, realm, access_token):
             return ['','']
     else:
         return ['','']
+
+def get_account_wide_achievement(achievement_id, access_token):
+    f_config = '/Users/haleyspeed/Docs/insight/api/config.ini'
+    config = configparser.ConfigParser()
+    config.read(f_config)
+    blizzard_key = config.get('KEYS', 'blizzard')
+    blizzard_secret = config.get('KEYS', 'blizzard_secret')
+    access_token = get_access_token(blizzard_key, blizzard_secret)
+    """Retrieves achievement category from the Blizzard API"""
+    url = 'https://us.api.blizzard.com/data/wow/achievement/' + \
+          str(achievement_id)+'?namespace=static-us&locale=en_US&access_token=' + access_token
+    try:
+        r = requests.get(url)
+    except:
+        pass
+    if r.status_code == 200:
+        unpacked = unpack_json(r.text)
+        results = {'achievement_name' : unpacked['name'],
+                    'achievement_id': unpacked['id'],
+                    'category_name': unpacked['category']['name'],
+                    'category_id': unpacked['category']['id'],
+                    'account_wide': unpacked['is_account_wide'],
+                    'criteria_id': '',
+                    'criteria_name': '',
+                    'next_name': '',
+                    'next_id': ''}
+        try:
+            results['criteria_id'] = unpacked['criteria']['id']
+        except:
+            print("unpacked['criteria']['id'] does not exist")
+        try:
+            results['criteria_name'] = unpacked['criteria']['name']
+        except:
+            print("unpacked['criteria']['name'] does not exist")
+        try:
+            results['next_id'] = unpacked['next_achievement']['id']
+        except:
+            print("unpacked['next_achievement']['id'] does not exist")
+        try:
+            results['next_name'] = unpacked['next_achievement']['name']
+        except:
+            print("unpacked['next_achievement']['name'] does not exist")
+        return results

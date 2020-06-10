@@ -1,20 +1,24 @@
 import os
 import custom_funcs as cf
 import csv
-import config
+import config as cn
 import numpy as np
+import glob
+import pandas as pd
 
 
-dir_in = os.path.join(config.clean_dir, 'processed_player_stats')
-dir_out = config.clean_dir
+dir_in = os.path.join(cn.processed_dir, '6-8_scrapes', 'trimmed')
 file_in = os.path.join(dir_in, '*{}')
-file_out = os.path.join(dir_out,'processed_player_concat_test.csv')
-df = cf.csv_concatenator (dir_in)
-df.to_csv(file_out)
+df = pd.DataFrame()
+os.chdir (dir_in)
+print(os.getcwd())
+i = 1
+for f in glob.glob('*{}'.format('csv')):
+    print(i,f)
+    df = df.append(pd.read_csv(f,dtype='unicode'))
 
-#dir_in = os.path.join(config.clean_dir, 'time_tallied')
-#dir_out = config.clean_dir
-#file_in = os.path.join(dir_in, '*{}')
-#file_out = os.path.join(dir_out,'timed_player_stats_subset.csv')
-#df = cf.csv_concatenator (dir_in)
-#df.to_csv(file_out)
+#    if i % 100 == 0:
+#        df.to_csv(f_out.replace('.csv', '_' + str(i) + '.csv'))
+#        df = pd.DataFrame()
+    i = i + 1
+df.to_csv(os.path.join(cn.clean_dir, 'trimmed_player_stats_test.csv'))

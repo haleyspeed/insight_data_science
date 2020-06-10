@@ -7,8 +7,8 @@ import glob
 
 
 # Setup IO
-f_cat = os.path.join(cn.clean_dir,'achievement_details_list.csv')
-folder = os.path.join(cn.processed_dir)
+f_cat = os.path.join(cn.clean_dir,'achievement_details_list2.csv')
+folder = os.path.join(cn.processed_dir, '6-8_scrapes', 'trimmed')
 
 # Read in the list of categories with achievements
 dfc = pd.read_csv(f_cat)
@@ -41,7 +41,7 @@ for f in glob.glob('*{}'.format('csv')):
     print(f)
 
     # Create the output dataframe
-    dfo = pd.DataFrame(columns=player_cols + timepoints + categories)
+    dfo = pd.DataFrame(columns=player_cols + timepoints)
 
     # Read in raw player achievement stats
     dfr = pd.read_csv(f)
@@ -50,7 +50,7 @@ for f in glob.glob('*{}'.format('csv')):
 
     # Build the processed_player_stats.csv dataset
     i = 0
-    for index, row in dfr.iterrows():
+    for index, row in dfr.iloc[:][:].iterrows():
 
         # Format output file
         f_out = os.path.join(cn.clean_dir, f.replace('wow', 'cat_counts'))
@@ -64,14 +64,13 @@ for f in glob.glob('*{}'.format('csv')):
         t.columns = ['achievement', 'date']
 
         # Setup df dates by category
-        c = t.copy()
-        for indexes, rows in c.iterrows():
-            try:
-                c.at[indexes, 'category'] = list(dfc[dfc.achievement_id.astype(str) == rows.achievement].category_name)[0]
-            except:
-                continue
-        b = c.copy()
-        d = c.copy()
+        #c = t.copy()
+        #for indexes, rows in c.iterrows():
+        #    try:
+        #        c.at[indexes, 'category'] = list(dfc[dfc.achievement_id.astype(str) == rows.achievement].category_name)[0]
+        #    except:
+        #        continue
+        #d = c.copy()
 
         # Get achievements per month
         t = t.iloc[:][:].groupby('date').count().reset_index() # remove top row (formerly column names before transpose)
@@ -82,15 +81,16 @@ for f in glob.glob('*{}'.format('csv')):
         t = t.drop(to_drop, axis = 1)
 
         # Get total categories
-        c = c.iloc[:][:].groupby('category').count().reset_index()  # remove top row (formerly column names before transpose)
-        c = d.transpose()
-        c.columns = c.iloc[0][:].sort_values()
-        c.columns = c.iloc[2][:]
-        c = c.drop(['achievement', 'category'])
+        #c = c.iloc[:][:].groupby('category').count().reset_index()  # remove top row (formerly column names before transpose)
+        #c = c.transpose()
+        #print(c.head())
+        #c.columns = c.iloc[0][:].sort_values()
+        #c.columns = c.iloc[2][:]
+        #c = c.drop(['achievement', 'category'])
 
         # Get dates per category
-        #d = d.groupby('category')['date'].apply(list).reset_index().transpose()
-        #d.columns = [col.lower() for col in d.iloc[0][:]]
+        #d = d.groupby(['category', 'date').count().reset_index().transpose()
+        ##d.columns = [col.lower() for col in d.iloc[0][:]]
         #d = d.iloc[1:][:]
 
         # Create a new row to append to dfo
@@ -105,15 +105,17 @@ for f in glob.glob('*{}'.format('csv')):
             tmp[col.lower()] = t[col.lower()].achievement
 
         # Add category per month data to the output row
-        #for col in d.columns.values:
-        #    tmp[col.lower()] = d[col.lower()].date
+        #for col in c.columns.values:
+        #    tmp[col.lower()] = c[col].category
 
-        add_categories = [add for add in dfo.columns.values if add not in tmp.keys()]
-        for add in add_categories:
-            tmp[add] = 0
-
+        #add_categories = [add for add in dfo.columns.values if add not in tmp.keys()]
+        #for add in add_categories:
+        #    tmp[add] = 0
         dfo = dfo.append(tmp, ignore_index=True)
+        dfo = dfo.fillna(int(0))
 
         i = i + 1
         print(i)
+
     dfo.to_csv(f_out)
+    break

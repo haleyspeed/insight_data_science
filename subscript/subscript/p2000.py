@@ -25,7 +25,7 @@ achievement_list = achievement_list.drop(['unnamed0', 'unnamed1'], axis = 1)
 for id in achievement_list.id:
     final_cols.append(str(int(id)))
 empty_row = dict.fromkeys(final_cols)
-i = 1
+i = 21701
 for group_num in np.arange(2000, 3000, 100):
     print('Group Number: ' + str(group_num))
     f = 'wow_roster' + str(group_num) + '.csv'

@@ -7,7 +7,7 @@ import glob
 import pandas as pd
 
 
-dir_in = os.path.join(cn.processed_dir, '6-8_scrapes', 'trimmed')
+dir_in = os.path.join(cn.processed_dir, '6-10_scrapes','processed_6-10-20')
 file_in = os.path.join(dir_in, '*{}')
 df = pd.DataFrame()
 os.chdir (dir_in)
@@ -21,4 +21,4 @@ for f in glob.glob('*{}'.format('csv')):
 #        df.to_csv(f_out.replace('.csv', '_' + str(i) + '.csv'))
 #        df = pd.DataFrame()
     i = i + 1
-df.to_csv(os.path.join(cn.clean_dir, 'trimmed_player_stats_test.csv'))
+df.to_csv(os.path.join(cn.clean_dir, 'final_feature_stats.csv'))

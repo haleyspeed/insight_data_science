@@ -6,6 +6,7 @@ import numpy as np
 import configparser as cp
 import datetime
 
+
 f_config = os.path.join(config.home_dir, '../', 'api', 'config.ini')
 conf = cp.ConfigParser()
 conf.read(f_config)
@@ -25,7 +26,7 @@ achievement_list = achievement_list.drop(['unnamed0', 'unnamed1'], axis = 1)
 for id in achievement_list.id:
     final_cols.append(str(int(id)))
 empty_row = dict.fromkeys(final_cols)
-i = 1
+i = 20901
 for group_num in np.arange(1000, 2000, 100):
     print('Group Number: ' + str(group_num))
     f = 'wow_roster' + str(group_num) + '.csv'

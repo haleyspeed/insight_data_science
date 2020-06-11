@@ -13,6 +13,15 @@ import configparser
 import gzip
 import xlrd
 import datetime
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
+from sklearn import preprocessing
+from sklearn.model_selection import ShuffleSplit
+from sklearn import metrics
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pickle
+import rfpimp
 
 
 def unpack_json(txt):
@@ -232,103 +241,6 @@ def get_wow_realms_list (namespace, locale):
     return realm_names, realm_ids, realm_slugs
 
 
-def get_mythic_dungeon_leaderboard_instances (realm_id, namespace, locale, access_token):
-    """Returns an index of Mythic Keystone Leaderboard dungeon instances for a connected realm"""
-    directory = 'data/wow/connected-realm/' + str(realm_id) + '/mythic-leaderboard/index'
-    url = 'https://us.api.blizzard.com/' + directory + '?namespace=' + namespace + \
-          '&locale=' + locale + '&access_token=' + access_token
-    try:
-        r = requests.get(url)
-    except:
-        pass
-    unpacked = unpack_json(r.text)
-    current_leaderboards = unpacked['current_leaderboards']
-    df = pd.DataFrame()
-    for leaderboard in current_leaderboards:
-        df = df.append(leaderboard, ignore_index=True)
-    return df
-
-
-def get_mythic_keystone_dungeon_leaderboard(realm_id,namespace,locale, instance, period):
-    """Retrieves the leaderboard information for a mythic using the Blizzard API.
-    Player information not included in recent data. Leads to an error."""
-    directory = 'data/wow/connected-realm/'
-    url = 'https://us.api.blizzard.com/' + directory + str(realm_id) + '/mythic-leaderboard/' + str(instance) + \
-          '/period/' + str(period) + '?namespace=' + namespace + \
-          '&locale=' + locale + '&access_token=' + access_token
-    try:
-        r = requests.get(url)
-    except:
-        pass
-    unpacked = unpack_json(r.text)
-    features = ['period', 'period_start_timestamp', 'period_end_timestamp', 'map_challenge_mode_id',
-               'map_challenge_mode_name', 'map_name', 'map_id', 'connected_realm', 'keystone_affix_names',
-               'keystone_affix_ids', 'keystone_affix_starting_level', 'leading_groups_ranking',
-               'leading_groups_duration', 'leading_groups_completed_timestamp', 'leading_groups_keystone_level',
-               'member_name, member_id', 'member_realm_id', 'member_realm_slug', 'member_faction',
-               'member_specialization']
-    df = pd.DataFrame()
-    values = list(unpacked.values())
-    map = values[1]
-    period = values[2]
-    period_start_timestamp  = values[3]
-    period_end_timestamp  = values[4]
-    map_challenge_mode_id  = values[8]
-    map_challenge_mode_name = values[9]
-    map_name = map['name']
-    map_id = map['id']
-
-    connected_realm = values[5]
-    connected_realm = connected_realm['href']
-
-    keystone_affixes = values[7]
-    keystone_affix_names = []
-    keystone_affix_ids = []
-    keystone_affix_starting_level = []
-    for affix in keystone_affixes:
-        keystone_affix_names.append(affix['keystone_affix']['name'])
-        keystone_affix_ids.append(affix['keystone_affix']['id'])
-        keystone_affix_starting_level.append(affix['starting_level'])
-
-    leading_groups = values[6]
-    for leading_group in leading_groups:
-        leading_groups_ranking = leading_group['ranking']
-        leading_groups_duration = leading_group['duration']
-        leading_groups_completed_timestamp = leading_group['completed_timestamp']
-        leading_groups_keystone_level = leading_group['keystone_level']
-        members = leading_group['members']
-        for member in members:
-            member_name = member['profile']['name']
-            member_id = member['profile']['id']
-            member_realm_id = member['profile']['realm']['id']
-            member_realm_slug =  member['profile']['realm']['slug']
-            member_faction = member['faction']['type']
-            member_specialization = member['specialization']['id']
-            tmp = {'period':period,
-                    'period_start_timestamp':period_start_timestamp,
-                   'period_end_timestamp':period_end_timestamp,
-                   'map_challenge_mode_id':map_challenge_mode_id,
-                   'map_challenge_mode_name':map_challenge_mode_name,
-                   'map_name':map_name,
-                   'map_id':map_id,
-                   'connected_realm':connected_realm,
-                   'keystone_affix_names':keystone_affix_names,
-                   'keystone_affix_ids':keystone_affix_ids,
-                   'keystone_affix_starting_level':keystone_affix_starting_level,
-                   'leading_groups_ranking':leading_groups_ranking,
-                   'leading_groups_duration':leading_groups_duration,
-                   'leading_groups_completed_timestamp':leading_groups_completed_timestamp,
-                   'leading_groups_keystone_level':leading_groups_keystone_level,
-                   'member_name':member_name,
-                   'member_id':member_id,
-                   'member_realm_id':member_realm_id,
-                   'member_realm_slug':member_realm_slug,
-                   'member_faction':member_faction,
-                   'member_specialization':member_specialization}
-        df = df.append(tmp, ignore_index=True)
-    return (df)
-
-
 def get_wow_profile (realm, player, token):
     """Retrievesthe public profile for a player using the Blizzard API"""
     url = 'https://us.api.blizzard.com/profile/wow/character/' + realm \
@@ -474,22 +386,6 @@ def csv_concatenator (folder):
         df = df.append(pd.read_csv(f))
     return df, f
 
-def super_big_csv_concatenator (file_in, file_out):
-    """Reads in a directory then sequentially adds the concatenates the
-    csv files in that directory"""
-    f_out = open(file_out, "w")
-    writer = csv.writer(f_out)
-    i = 0
-    for f in glob.glob(file_in.format('csv')):
-        df = pd.read_csv(f)
-        if i == 0:
-            writer.writerow(df.columns)
-        print(f)
-        for row in df.itertuples():
-            writer.writerow(row)
-        i = i + 1
-    f_out.close()
-
 
 def dataset_cleaner (f):
     """Removes empty rows and duplicate rows from a csv file"""
@@ -583,3 +479,126 @@ def get_account_wide_achievement(achievement_id, access_token):
         except:
             print("unpacked['next_achievement']['name'] does not exist")
         return results
+
+
+def get_dates():
+    dates = sorted(['2007-01', '2008-01', '2009-01', '2010-01', '2011-01',
+    '2012-01', '2013-01', '2014-01', '2015-01', '2016-01', '2017-01', '2018-01',
+    '2019-01', '2020-01', '2011-02', '2012-02', '2013-02', '2014-02', '2015-02',
+    '2016-02', '2017-02', '2018-02', '2019-02', '2020-02', '2011-03', '2012-03',
+    '2013-03', '2014-03', '2015-03', '2016-03', '2017-03', '2018-03', '2019-03',
+    '2020-03', '2011-04', '2012-04', '2013-04', '2014-04', '2015-04', '2016-04',
+    '2017-04', '2018-04', '2019-04', '2020-04', '2011-05', '2012-05', '2013-05',
+    '2014-05', '2015-05', '2016-05', '2017-05', '2018-05', '2019-05', '2020-05',
+    '2011-06', '2012-06', '2013-06', '2014-06', '2015-06', '2016-06', '2017-06',
+    '2018-06', '2019-06', '2020-06', '2011-07', '2012-07', '2013-07', '2014-07',
+    '2015-07', '2016-07', '2017-07', '2018-07', '2019-07', '2011-08', '2012-08',
+    '2013-08', '2014-08', '2015-08', '2016-08', '2017-08', '2018-08', '2019-08',
+    '2020-08', '2011-09', '2012-09', '2013-09', '2014-09', '2015-09', '2016-09',
+    '2017-09', '2018-09', '2019-09', '2020-09', '2011-10', '2012-10', '2013-10',
+    '2014-10', '2015-10', '2016-10', '2017-10', '2018-10', '2019-10', '2020-10',
+    '2011-11', '2012-11', '2013-11', '2014-11', '2015-11', '2016-11', '2017-11',
+    '2018-11', '2019-11', '2020-11', '2011-12', '2012-12', '2013-12', '2014-12',
+    '2015-12', '2016-12', '2017-12', '2018-12', '2019-12', '2020-12'])
+    return dates
+
+# Convert RF metrics to DF
+def metrics_formatter(mets, folder, f_name):
+    os.chdir(folder)
+    bits = mets.split(' ')
+
+    df = pd.DataFrame()
+    row1 = [0, bits[40], bits[45], bits[50], bits[55].replace('\n', '')]
+    row2 = [1, bits[72], bits[77], bits[82], bits[88].replace('\n', '')]
+    row3 = [2, bits[105], bits[110], bits[115], bits[121].replace('\n', '')]
+    row4 = [3, bits[138], bits[143], bits[148], bits[154].replace('\n', '')]
+    row5 = ['accuracy', '', '', bits[184], bits[189].replace('\n', '')]
+    row6 = ['macro_avg', bits[199], bits[204], bits[209], bits[214].replace('\nweighted', '')]
+    row7 = ['weighted_avg', bits[221], bits[226], bits[231], bits[236].replace('\n', '')]
+    df = df.append([row1,row2,row3,row4,row5,row6,row7])
+    df.columns = ['ind', 'precision', 'recall', 'f1-score', 'support']
+    df.to_csv(f_name)
+    return df
+
+def random_forest_feature_selection (df_tree, group):
+    print("Making training and test sets....")
+    rs = ShuffleSplit(n_splits=10, test_size=.25, random_state=17)
+
+    for train_index, test_index in rs.split(df_tree):
+        train_set = df_tree.iloc[train_index].copy()
+        test_set = df_tree.iloc[test_index].copy()
+        #print(train_set.head())
+
+    y_train = train_set.engagement
+    X_train = train_set.drop('engagement',axis = 1)
+    y_test = test_set.engagement
+    X_test = test_set.drop('engagement',axis = 1)
+    encoder = preprocessing.LabelEncoder() # get a type error if not encoded
+    y_train = encoder.fit_transform(y_train)
+    y_test = encoder.fit_transform(y_test)
+
+
+
+    print("Start random forest...")
+    selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
+                           oob_score = True,bootstrap = True,random_state = 17)
+    selected.fit(X_train, y_train)
+
+
+    print("Important Features...")
+    os.chdir(os.path.join(config.clean_dir))
+    dfa = pd.read_csv('achievement_details_list.csv')
+    importances = selected.feature_importances_
+    indices = np.argsort(importances)
+
+    print('Top 20 achievements for ', group)
+    top = []
+    for i, v in enumerate(df_tree.columns.values[indices][:1000]):
+        name = dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0]
+        top.append(name)
+    return top
+
+
+
+def feature_permutation (df_tree, group):
+    print("Making training and test sets....")
+    rs = ShuffleSplit(n_splits=10, test_size=.25, random_state=17)
+
+    for train_index, test_index in rs.split(df_tree):
+        train_set = df_tree.iloc[train_index].copy()
+        test_set = df_tree.iloc[test_index].copy()
+        #print(train_set.head())
+
+    y_train = train_set.engagement
+    X_train = train_set.drop('engagement',axis = 1)
+    y_test = test_set.engagement
+    X_test = test_set.drop('engagement',axis = 1)
+    encoder = preprocessing.LabelEncoder() # get a type error if not encoded
+    y_train = encoder.fit_transform(y_train)
+    y_test = encoder.fit_transform(y_test)
+
+
+
+    print("Start random forest...")
+    selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
+                           oob_score = True,bootstrap = True,random_state = 17)
+    fitted = selected.fit(X_train, y_train)
+    oob_classifier_accuracy = rfpimp.oob_classifier_accuracy(fitted, X_train, y_train)
+    imp = rfpimp.permutation_importances(fitted, X_train, y_train,
+        oob_classifier_accuracy)
+    print(imp)
+    return(imp)
+
+
+    #print("Important Features...")
+    #os.chdir(os.path.join(config.clean_dir))
+    #dfa = pd.read_csv('achievement_details_list.csv')
+    #importances = selected.feature_importances_
+    #indices = np.argsort(importances)
+
+    #print('Top 20 achievements for ', group)
+    #top = []
+    #for i, v in enumerate(df_tree.columns.values[indices][3900:4000]):
+    #    name = dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0]
+    #    top.append(name)
+    #return top

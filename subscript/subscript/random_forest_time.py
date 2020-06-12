@@ -39,7 +39,8 @@ for index, row in df.iterrows():
     elif int(row.time_since_login.split(' ')[0]) <= 365:
         df.at[index,'engagement'] = 3
         df.at[index,'status'] = 'unsubscribed'
-
+    df.to_csv(os.path.join(cn.clean_dir, 'final_player_stats_test2.csv'))
+exit()
 print ("Making the tree dataset...")
 df_tree = df.copy()
 df_tree = df_tree.drop(['last_login','time_since_login', 'player','realm','status','last_login','gear_score'], axis = 1)

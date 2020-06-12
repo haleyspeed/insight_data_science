@@ -552,11 +552,12 @@ def random_forest_feature_selection (df_tree, group):
     indices = np.argsort(importances)
 
     print('Top 20 achievements for ', group)
-    top = []
+    names = []
+    ids = []
     for i, v in enumerate(df_tree.columns.values[indices][:1000]):
-        name = dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0]
-        top.append(name)
-    return top
+        names.append (dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0])
+        ids.append (v)
+    return ids, names
 
 
 

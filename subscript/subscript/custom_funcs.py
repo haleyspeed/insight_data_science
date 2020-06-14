@@ -158,7 +158,7 @@ def get_wow_achievement_category(cat_id):
         return 'error'
 
 
-def get_wow_achievement(achievement_id):
+def get_wow_achievement(achievement_id, access_token):
     f_config = '/Users/haleyspeed/Docs/insight/api/config.ini'
     config = configparser.ConfigParser()
     config.read(f_config)
@@ -176,7 +176,9 @@ def get_wow_achievement(achievement_id):
         unpacked = unpack_json(r.text)
         results = {'achievement_name' : unpacked['name'],
                     'achievement_id': unpacked['id'],
+                    'account_wide': unpacked['is_account_wide'],
                     'category_name': unpacked['category']['name'],
+                    'description': unpacked['description'],
                     'category_id': unpacked['category']['id'],
                     'criteria_id': '',
                     'criteria_name': '',
@@ -200,13 +202,25 @@ def get_wow_achievement(achievement_id):
             print("unpacked['next_achievement']['name'] does not exist")
         return results
 
+def get_wow_achievement_ids (access_token):
+    """Retrieves the total achievement list from the Blizard API"""
+    url = 'https://us.api.blizzard.com/data/wow/achievement/index?namespace=static-us&locale=en_US&access_token='+ access_token
+    try:
+        r = requests.get(url)
+        print(r.status_code)
+    except:
+        pass
+    unpacked = unpack_json (r.text)
+    out = []
+    for i, achievement in enumerate(unpacked['achievements']):
+        out.append(achievement['id'])
+    return out
 
-
-def get_wow_achievement_list (namespace, locale):
+def get_wow_achievement_list (locale):
     """Retrieves the total achievement list from the Blizard API"""
     directory = 'data/wow/achievement/index'
     url = 'https://us.api.blizzard.com/'+ directory +'?namespace='+ namespace + \
-      '&locale=' + locale + '&access_token='+ access_token
+      '&locale=en_US&access_token='+ access_token
     try:
         r = requests.get(url)
     except:
@@ -533,28 +547,37 @@ def random_forest_feature_selection (df_tree, group):
     X_train = train_set.drop('engagement',axis = 1)
     y_test = test_set.engagement
     X_test = test_set.drop('engagement',axis = 1)
-    encoder = preprocessing.LabelEncoder() # get a type error if not encoded
-    y_train = encoder.fit_transform(y_train)
-    y_test = encoder.fit_transform(y_test)
+    #encoder = preprocessing.LabelEncoder() # get a type error if not encoded
+    y_train = y_train
+    y_test = y_test
 
 
 
     print("Start random forest...")
     selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
-                           oob_score = True,bootstrap = True,random_state = 17)
+                           oob_score = False,bootstrap = False,random_state = 17)
     selected.fit(X_train, y_train)
 
-
+    #print('predictions')
+    #print(selected.predict(X_test))
     print("Important Features...")
     os.chdir(os.path.join(config.clean_dir))
     dfa = pd.read_csv('achievement_details_list.csv')
     importances = selected.feature_importances_
     indices = np.argsort(importances)
-
+    print('importances:')
+    for imp in importances[:100]:
+        print(imp)
+    print('indices')
+    for ind in indices[:100]:
+        print(ind)
+    #df_imp = pd.DataFrame(imp,ind)
+    #df_imp.to_csv(os.path.join(cn.cleaned,'importances.csv'))
     print('Top 20 achievements for ', group)
     names = []
     ids = []
-    for i, v in enumerate(df_tree.columns.values[indices][:1000]):
+    for i, v in enumerate(df_tree.columns.values[indices]):
+        print(i,v)
         names.append (dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0])
         ids.append (v)
     return ids, names

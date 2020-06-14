@@ -8,7 +8,8 @@ import pandas as pd
 
 risk = 60
 lapsed = 180
-dir_in = os.path.join(cn.processed_dir, '6-10_scrapes','processed_6-10-20', 'concatenated')
+dir_in = os.path.join(os.path.join(cn.processed_dir, '6-10_scrapes', 'processed_6-10-20',
+    'time'))
 file_in = os.path.join(dir_in, '*{}')
 df = pd.DataFrame()
 os.chdir (dir_in)
@@ -34,4 +35,5 @@ for f in glob.glob('*{}'.format('csv')):
         elif int(row.time_since_login.split(' ')[0]) <= 365:
             df.at[index,'engagement'] = 3
             df.at[index,'status'] = 'inactive'
-    df.to_csv(os.path.join(dir_in, 'engaged', f.replace('engaged', str(i) + 'concat_trim')))
+        i = i + 1
+    df.to_csv(os.path.join(dir_in, 'engaged', f.replace('time','engaged_time')))

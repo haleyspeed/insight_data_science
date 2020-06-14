@@ -8,7 +8,7 @@ import pandas as pd
 
 risk = 60
 lapsed = 180
-dir_in = os.path.join(cn.clean_dir, 'processed_6-10-20')
+dir_in = os.path.join(cn.processed_dir, '6-10_scrapes','processed_6-10-20', 'bfa_features')
 file_in = os.path.join(dir_in, '*{}')
 df = pd.DataFrame()
 os.chdir (dir_in)
@@ -20,18 +20,14 @@ for f in glob.glob('*{}'.format('csv')):
 
     #if 'engagement' not in df.columns.values:
     df['engagement'] = np.nan
-    df['status'] = ''
     for index, row in df.iterrows():
         if int(row.time_since_login.split(' ')[0]) <= 30:
             df.at[index,'engagement'] = 0
-            df.at[index,'status'] = 'active'
         elif int(row.time_since_login.split(' ')[0]) <= risk:
             df.at[index,'engagement'] = 1
             df.at[index,'status'] = 'risk'
         elif int(row.time_since_login.split(' ')[0]) <= lapsed:
             df.at[index,'engagement'] = 2
-            df.at[index,'status'] = 'lapsed'
         elif int(row.time_since_login.split(' ')[0]) <= 365:
             df.at[index,'engagement'] = 3
-            df.at[index,'status'] = 'inactive'
-    df.to_csv(os.path.join(dir_in, 'engaged', f.replace('engaged', str(i) + 'concat_trim')))
+    df.to_csv(os.path.join(dir_in, 'engaged', f.replace('bfa_features', 'engaged')))

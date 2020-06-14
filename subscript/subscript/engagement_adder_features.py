@@ -16,7 +16,7 @@ print(os.getcwd())
 i = 1
 for f in glob.glob('*{}'.format('csv')):
     print(i,f)
-    df = df.append(pd.read_csv(f,dtype='unicode'))
+    df = pd.read_csv(f,dtype='unicode')
 
     #if 'engagement' not in df.columns.values:
     df['engagement'] = np.nan
@@ -30,4 +30,4 @@ for f in glob.glob('*{}'.format('csv')):
             df.at[index,'engagement'] = 2
         elif int(row.time_since_login.split(' ')[0]) <= 365:
             df.at[index,'engagement'] = 3
-    df.to_csv(os.path.join(dir_in, 'engaged', f.replace('bfa_features', 'engaged')))
+    df.to_csv(os.path.join(dir_in, 'engaged_features_', f.replace('bfa_features', 'engaged')))

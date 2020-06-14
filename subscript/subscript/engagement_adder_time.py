@@ -11,13 +11,13 @@ lapsed = 180
 dir_in = os.path.join(os.path.join(cn.processed_dir, '6-10_scrapes', 'processed_6-10-20',
     'time'))
 file_in = os.path.join(dir_in, '*{}')
-df = pd.DataFrame()
+
 os.chdir (dir_in)
 print(os.getcwd())
 i = 1
 for f in glob.glob('*{}'.format('csv')):
     print(i,f)
-    df = df.append(pd.read_csv(f,dtype='unicode'))
+    df = pd.read_csv(f,dtype='unicode')
 
     #if 'engagement' not in df.columns.values:
     df['engagement'] = np.nan

@@ -7,41 +7,19 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
 from sklearn import preprocessing
 from sklearn.model_selection import ShuffleSplit
+from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn import metrics
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
 
-risk = 60
-lapsed = 180
+df = pd.read_csv(os.path.join(cn.clean_dir, 'final_time_stats.csv'))
+train_set = pd.read_csv(os.path.join(cn.clean_dir,'time_stratified_train.csv'))
+test_set = pd.read_csv(os.path.join(cn.clean_dir,'time_stratified_test.csv'))
 
-print ("Reading in file...")
-df = pd.read_csv(os.path.join(cn.clean_dir, 'processed_6-10-20','engaged', 'processed_6-8_dates_100_100.csv'),dtype = 'unicode')
-print(df.info())
-dfa = pd.read_csv(os.path.join(cn.clean_dir, 'achievement_details_list.csv'))
-keep = dfa.achievement_id[dfa.category_name == 'Battle for Azeroth'].astype(int)
-extra_cols = [c for c in df.columns.values if 'unnamed' in str(c).lower() or c not in keep]
-print(df.info())
-df = df.drop(extra_cols, axis = 1)
-if 'id' not in df.columns.values:
-    df['id'] = df.player + '_' + df.realm
+#drop_cols = ['id']
+#train_set = train_set.drop(drop_cols)
 
-
-print ("Making the tree dataset...")
-df_tree = df.copy()
-df_tree = df_tree.drop(['last_login','time_since_login', 'player',
-                'realm','status','last_login','gear_score'], axis = 1)
-df_tree = df_tree.set_index('id')
-for c in df_tree.columns.values:
-    print(c)
-
-print("Making training and test sets....")
-rs = ShuffleSplit(n_splits=10, test_size=.25, random_state=17)
-
-for train_index, test_index in rs.split(df_tree):
-    train_set = df_tree.iloc[train_index].copy()
-    test_set = df_tree.iloc[test_index].copy()
-print(train_set.head())
 
 y_train = train_set.engagement
 X_train = train_set.drop('engagement',axis = 1)
@@ -54,19 +32,19 @@ y_test = encoder.fit_transform(y_test)
 fig1, axes = plt.subplots( figsize=(10,10), dpi=100)
 a = sns.distplot(df.engagement, color="darkcyan",  axlabel='status')
 a.set_xticklabels(df.status, rotation = 45)
-fig1.savefig(os.path.join(cn.clean_dir, 'pickles',
+fig1.savefig(os.path.join(cn.clean_dir, 'random_forest_classifier',
             'histplot_time_balanced.png'), dpi=180)
 
 
 print("Start random forest...")
 from sklearn.ensemble import RandomForestClassifier
-class_weight = dict({1:1, 2:7, 3:8, 4:10})
-selected = RandomForestClassifier(bootstrap=True,
-            class_weight=class_weight, n_estimators=300,
-            oob_score=True,random_state=17)
+#class_weight = dict({0:.5, 1:1, 2:8})
+#selected = RandomForestClassifier(bootstrap=True,
+#            class_weight=class_weight, n_estimators=300,
+#            oob_score=True,random_state=17)
 
-#selected = RandomForestClassifier(n_estimators = 100,n_jobs = -1,
-#                           oob_score = True,bootstrap = True,random_state = 17)
+selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
+            oob_score = True,bootstrap = True,random_state = 17)
 selected.fit(X_train, y_train)
 
 
@@ -83,6 +61,7 @@ predictions = selected.predict(X_test)
 df_pred = pd.DataFrame(X_test)
 df_pred['prediction'] = predictions
 df_pred['actual'] = y_test
+df_pred.to_csv(os.path.join(cn.clean_dir, 'random_forest_classifier','final_test_predictions.csv'), index = False)
 
 
 print('Getting accuracy score...')
@@ -99,24 +78,24 @@ print(cnf_matrix)
 
 # Print the precision and recall, among other metrics
 met = metrics.classification_report(y_test, predictions, digits=3)
-folder = os.path.join(cn.clean_dir, 'pickles')
+folder = os.path.join(cn.clean_dir, 'random_forest_classifier',)
 f_name = 'metrics_time_balanced_metrics.csv'
-print(cf.metrics_formatter(met, folder, f_name))
+print(met)
+#print(cf.metrics_formatter(met, folder, f_name))
 
 
-
-print("Plotting the confusing matrix...")
+print("Plotting the confusion matrix...")
 fig2, ax = plt.subplots(figsize = (8,8))
 sns.heatmap(pd.DataFrame(cnf_matrix), annot = True, cmap = 'viridis', fmt = 'g', annot_kws={"size":16})
 ax.set_xlabel ("Predicted Value", fontsize = 18)
 ax.set_ylabel ("Actual Value", fontsize = 18)
 ax.tick_params (labelsize = 14)
 plt.tight_layout()
-fig2.savefig(os.path.join(cn.clean_dir, 'pickles','cnfmatrix_time_balanced.png'), dpi=180)
+fig2.savefig(os.path.join(cn.clean_dir, 'random_forest_classifier','cnfmatrix_time_balanced.png'), dpi=180)
 
 # save the model to disk
-pickle_name = 'rf_time_balanced_model.sav'
-os.chdir(os.path.join(cn.clean_dir, 'pickles'))
+pickle_name = 'final_time_model.sav'
+os.chdir(os.path.join(cn.clean_dir,'random_forest_classifier'))
 with open(pickle_name, 'wb') as file:
     pickle.dump(selected, file)
 plt.show()

@@ -7,7 +7,7 @@ import glob
 
 
 # Setup IO
-f_cat = os.path.join(cn.clean_dir,'achievement_short_list.csv')
+f_cat = os.path.join(cn.clean_dir,'6-13_achievement_list.csv')
 folder = os.path.join(cn.processed_dir, '6-10_scrapes')
 
 # Read in the list of categories with achievements
@@ -18,7 +18,7 @@ achievements = dfc.achievement_id.values.astype(int).astype(str)
 # Define output file columns
 player_cols = ['player', 'realm', 'gear_score', 'last_login', 'time_since_login']
 months = np.arange(1, 13)
-years = [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+years = [2014, 2015, 2016, 2017, 2018, 2019, 2020]
 timepoints = []
 
 for month in months:

@@ -20,5 +20,5 @@ i = 1
 for f in glob.glob('*{}'.format('csv')):
     print(i,f)
     df = df.append(pd.read_csv(f,dtype='unicode'))
-df.to_csv(os.path.join(cn.clean_dir,
-        f.split('final_time_stats.csv')))
+    df = df.drop_duplicates()
+df.to_csv(os.path.join(cn.clean_dir,'final_time_stats_test.csv'))

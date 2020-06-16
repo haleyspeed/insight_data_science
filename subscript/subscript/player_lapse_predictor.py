@@ -9,35 +9,34 @@ from sklearn import preprocessing
 from sklearn.model_selection import ShuffleSplit
 from sklearn import metrics
 import pickle
+import joblib
+import matplotlib.pyplot as plt
 
-# load the model from disk
-def player_lapse_predictor(pickle_path, X_test, y_test):
-    loaded_model = pickle.load(open(pickle_path, 'rb'))
-    result = loaded_model.score(X_test, y_test)
-    predictions = loaded_model.predict(X_test)
-    df_pred = pd.DataFrame(X_test)
-    df_pred['prediction'] = predictions
-    return  df_pred
+print('Reading in File...')
+df = pd.read_csv(os.path.join(cn.clean_dir, 'whole_test_set.csv'))
+dfo = df.copy()
+model = joblib.load(os.path.join(cn.clean_dir,'pickles', 'final_time_model.sav'))
+features = ['player', 'realm','last_login', 'time_since_login',
+           'engagement', 'status']
 
-def get_predictions (pickle_model, pickle_path, risk, lapsed, samples):
-    df = pd.read_csv(os.path.join(cn.clean_dir, 'processed_6-10-20',
-        'engaged','processed_6-8_dates_100_400.csv'), dtype = 'unicode')
-    extra_cols = [c for c in df.columns.values if 'unnamed' in str(c).lower()]
-    df = df.drop(extra_cols, axis = 1)
-    if 'id' not in df.columns.values:
-        df['id'] = df.player + '_' + df.realm
-    df = df.set_index('id')
+print('Preparing test set...')
+y = df.engagement
+X = df.drop(features, axis = 1)
 
+print('Predicting engagement status... ')
+pred = model.predict(X)
+dfo['pred'] = pred
+dfo['actual'] = y
 
-    print ("Making the tree dataset...")
-    df_tree = df.copy()
-    df_tree = df_tree.drop(['last_login','time_since_login',
-            'player','realm','status','gear_score'], axis = 1)
-    #df_tree = df_tree.set_index('id')
+print('Printing predictions....')
+print_cols = features + ['pred']
+print(dfo)
 
-
-    y_test = df_tree.engagement
-    X_test = df_tree.drop('engagement', axis = 1)
-    df_pred = player_lapse_predictor(pickle_path, X_test, y_test)
-    return(df_pred['actual', 'prediction'])
-    #, 'projection_1', 'projection2', 'projection3','projection4','projection5'])
+# Add 1-5 achievements in the next month
+i = 1
+for i in np.arange(1,6):
+    df['2020-05'] = df['2020-05'].values.astype(float) + 1
+    new_pred = model.predict(df.drop(features, axis = 1))
+    dfo['pred' + str(i)] = new_pred
+dfo.to_csv(os.path.join(cn.clean_dir, 'random_forest_classifier',
+        'test_predictions.csv'), index = False)

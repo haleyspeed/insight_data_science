@@ -25,7 +25,7 @@ achievement_list = achievement_list.drop(['unnamed0', 'unnamed1'], axis = 1)
 for id in achievement_list.id:
     final_cols.append(str(int(id)))
 empty_row = dict.fromkeys(final_cols)
-i = 21901
+i = 49901
 for group_num in np.arange(4000, 5000, 100):
     print('Group Number: ' + str(group_num))
     f = 'wow_roster' + str(group_num) + '.csv'
@@ -51,8 +51,8 @@ for group_num in np.arange(4000, 5000, 100):
                     print("error in " + row['id'])
                 df = df.append(row, ignore_index=True)
         if i % 100 == 0:
-            f_name = f.split('roster')[0] + '6-8_dates_' + str(group_num) + '_' + str(i) + '.csv'
-            df.to_csv(os.path.join(config.processed_dir,'6-8_scrapes', f_name))
+            f_name = f.split('roster')[0] + '6-15_dates_' + str(group_num) + '_' + str(i) + '.csv'
+            df.to_csv(os.path.join(config.processed_dir,'6-15_scrapes', f_name))
             df = pd.DataFrame()
             print(f_name + ' saved')
         i = i + 1

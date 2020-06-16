@@ -6,7 +6,7 @@ import numpy as np
 import glob
 
 # Read in the dataset and achievement details list
-dfa = pd.read_csv(os.path.join(cn.clean_dir,'achievement_short_list.csv'))
+dfa = pd.read_csv(os.path.join(cn.clean_dir,'6-13_achievement_list.csv'))
 achievements = list(dfa.achievement_id.values.astype(int).astype(str))
 print(type(achievements))
 

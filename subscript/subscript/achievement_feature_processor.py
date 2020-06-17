@@ -10,7 +10,7 @@ dfa = pd.read_csv(os.path.join(cn.clean_dir,'6-13_achievement_list.csv'))
 achievements = list(dfa.achievement_id.values.astype(int).astype(str))
 print(type(achievements))
 
-os.chdir (os.path.join(cn.processed_dir,'6-10_scrapes'))
+os.chdir (os.path.join(cn.processed_dir,'6-15_scrapes'))
 for f in glob.glob('*{}'.format('csv')):
     player_cols = ['player', 'realm', 'gear_score', 'last_login', 'time_since_login']
     keep_cols = player_cols + achievements
@@ -19,7 +19,7 @@ for f in glob.glob('*{}'.format('csv')):
     keep_cols = [c for c in keep_cols if c in df.columns.values]
 
     df = df[keep_cols]
-    f_out = os.path.join(cn.processed_dir,'6-10_scrapes','processed_6-10-20',
-            'bfa_features', f.replace('wow','bfa_features'))
+    f_out = os.path.join(cn.processed_dir,'6-15_scrapes','processed',
+            'features', f.replace('wow','features'))
     df = df.to_csv(f_out)
     print(f_out)

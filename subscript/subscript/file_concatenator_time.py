@@ -10,7 +10,7 @@ import pandas as pd
 #dir_in = os.path.join(cn.processed_dir, '6-10_scrapes',
 #    'processed_6-10-20', 'concatenated', 'engaged')
 
-dir_in = os.path.join(cn.processed_dir, '6-10_scrapes','processed_6-10-20','time', 'engaged')
+dir_in = os.path.join(cn.processed_dir, '6-15_scrapes','processed','time', 'engaged')
 
 #file_in = os.path.join(dir_in, '*{}')
 df = pd.DataFrame()
@@ -21,4 +21,4 @@ for f in glob.glob('*{}'.format('csv')):
     print(i,f)
     df = df.append(pd.read_csv(f,dtype='unicode'))
     df = df.drop_duplicates()
-df.to_csv(os.path.join(cn.clean_dir,'final_time_stats_test.csv'))
+df.to_csv(os.path.join(dir_in,'concats','6-15_final_time_stats.csv'))

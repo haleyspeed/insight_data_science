@@ -2,13 +2,12 @@ import streamlit as st
 import pandas as pd
 import config as cn
 import os.path
-import requests
 import numpy as np
 import matplotlib.pyplot as plt
 import random as rn
-import joblib
+import time
 
-#@st.cache
+
 
 def get_data():
     """ Loads in pre-processed data for fast loading """
@@ -62,8 +61,8 @@ def update_plot(fig, ax, df_results):
     ax.set_xlabel('\n Additional Achievements Completed', fontsize = 18)
     plt.tight_layout()
     st.sidebar.pyplot()
-
-
+    return retained
+#@st.cache
 # Set default variables
 df, df_rec = get_data()
 get_recs = False
@@ -100,17 +99,27 @@ st.markdown('\n')
 #    st.sidebar.bar_chart([y1,y2,y3,y4,y5])
 
 
+# Delay appearance of side bar
+#time.sleep(10)
 
-
-#start = st.button ('Get At-Risk Players')
-#if start:
-    # Puts the Maximum ROI on the sidebar
+# Puts the Maximum ROI on the sidebar
 st.write ('\n')
 st.sidebar.subheader('Estimated Return on Investment')
 fig, ax = plt.subplots()
-update_plot(fig, ax, df_results)
-start = True
+retained = update_plot(fig, ax, df_results)
+sample_size = len(df_results.player)
+#st.sidebar.markdown(sample_size)
+percent_recovery = []
+for i in np.arange(0,5):
+    percent_recovery.append(round(100*(retained[i])/sample_size,1))
+st.sidebar.markdown('## Estimated decrease in lapsed subscribers: ')
+st.sidebar.markdown('1 additional achievement: ' + str(percent_recovery[0]) + '%')
+st.sidebar.markdown('2 additional achievements: ' + str(percent_recovery[1])+ '%')
+st.sidebar.markdown('3 additional achievements: ' + str(percent_recovery[2])+ '%')
+st.sidebar.markdown('4 additional achievements: '+ str(percent_recovery[3])+ '%')
+st.sidebar.markdown('5 additional achievements: '+ str(percent_recovery[4])+ '%')
 
+st.sidebar.markdown(' ')
 recs = get_recommendations(df_rec)
 rec_list = st.sidebar.button('Get Curated Recommendations')
 if rec_list:
@@ -124,6 +133,4 @@ if rec_list:
     st.sidebar.markdown(recs[3][2])
     st.sidebar.subheader(recs[4][1])
     st.sidebar.markdown(recs[4][2])
-    start = True
 st.table(df_results[features])
-start = True

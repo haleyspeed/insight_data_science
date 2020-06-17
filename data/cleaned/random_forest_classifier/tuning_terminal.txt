@@ -1,0 +1,840 @@
+Last login: Tue Jun 16 01:01:36 on ttys012
+haleyspeed@Haleys-MacBook-Pro ~ % cd ~Docs/insight
+zsh: no such user or named directory: Docs
+haleyspeed@Haleys-MacBook-Pro ~ %  cd ~/Docs/insight
+haleyspeed@Haleys-MacBook-Pro insight %  source ins_env/bin/activate
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight % cd insight_data_science/subscript/subscript
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % cd insight_data_science/subscript/subscript
+cd: no such file or directory: insight_data_science/subscript/subscript
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % cd ~/Docs/insightcd ../  
+cd: string not in pwd: /Users/haleyspeed/Docs/insightcd
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript %  c..
+zsh: command not found: c..
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % cd //
+(ins_env) haleyspeed@Haleys-MacBook-Pro / % cd~/Docs/insight
+zsh: no such file or directory: cd~/Docs/insight
+(ins_env) haleyspeed@Haleys-MacBook-Pro / % cd ~Docs/insight
+zsh: no such user or named directory: Docs
+(ins_env) haleyspeed@Haleys-MacBook-Pro / % cd ~/Docs/insight
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight % cd insight_data_science
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git add .
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   .ipynb_checkpoints/housing-checkpoint.ipynb
+	new file:   data/cleaned/eda/time_series.png
+	modified:   data/cleaned/pickles/cnfmatrix_time_balanced.png
+	modified:   data/cleaned/pickles/histplot_time_balanced.png
+	new file:   data/cleaned/random_forest_classifier/cnfmatrix_time_balanced.png
+	new file:   data/cleaned/random_forest_classifier/histplot_time_balanced.png
+	new file:   housing.ipynb
+	new file:   scripts/archive/5_last_100_feature_getter.py
+	new file:   scripts/archive/account_wiide_achievement_getter.py
+	new file:   scripts/archive/achievement_categorizer.py
+	new file:   scripts/archive/achievement_processor.py
+	new file:   scripts/archive/achievementmaker.py
+	new file:   subscript/subscript/.ipynb_checkpoints/02_feature_explorer-checkpoint.ipynb
+	modified:   subscript/subscript/.ipynb_checkpoints/02_timeseries_explorer-checkpoint.ipynb
+	new file:   subscript/subscript/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+	new file:   subscript/subscript/.ipynb_checkpoints/Untitled1-checkpoint.ipynb
+	new file:   subscript/subscript/.ipynb_checkpoints/XGBoost-checkpoint.ipynb
+	new file:   subscript/subscript/02_feature_explorer.ipynb
+	modified:   subscript/subscript/02_timeseries_explorer.ipynb
+	new file:   subscript/subscript/XGBoost.ipynb
+	modified:   subscript/subscript/achievement_feature_processor.py
+	modified:   subscript/subscript/achievement_time_processor.py
+	modified:   subscript/subscript/custom_funcs.py
+	modified:   subscript/subscript/engagement_adder_features.py
+	modified:   subscript/subscript/engagement_adder_time.py
+	new file:   subscript/subscript/feature_wrapper_classifier.py
+	renamed:    subscript/subscript/feature_wrapper.py -> subscript/subscript/feature_wrapper_reggression.py
+	modified:   subscript/subscript/file_concatenator_features.py
+	modified:   subscript/subscript/file_concatenator_time.py
+	new file:   subscript/subscript/important_features_list.py
+	new file:   subscript/subscript/main.py
+	modified:   subscript/subscript/p1000.py
+	modified:   subscript/subscript/p2000.py
+	modified:   subscript/subscript/p3000.py
+	modified:   subscript/subscript/p4000.py
+	modified:   subscript/subscript/p5000.py
+	modified:   subscript/subscript/p6000.py
+	modified:   subscript/subscript/p7000.py
+	modified:   subscript/subscript/p8000.py
+	renamed:    subscript/subscript/p10000.py -> subscript/subscript/p9000.py
+	modified:   subscript/subscript/player_lapse_predictor.py
+	modified:   subscript/subscript/random_forest_time.py
+	new file:   subscript/subscript/streamlit.py
+	new file:   subscript/subscript/subscript.jpg
+	new file:   subscript/subscript/subscript.py
+	deleted:    subscript/subscript/xgboost.py
+
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git commit -m 'near final'
+[master a86751e] near final
+ 46 files changed, 41917 insertions(+), 2664 deletions(-)
+ create mode 100644 .ipynb_checkpoints/housing-checkpoint.ipynb
+ create mode 100644 data/cleaned/eda/time_series.png
+ rewrite data/cleaned/pickles/cnfmatrix_time_balanced.png (98%)
+ rewrite data/cleaned/pickles/histplot_time_balanced.png (99%)
+ create mode 100644 data/cleaned/random_forest_classifier/cnfmatrix_time_balanced.png
+ create mode 100644 data/cleaned/random_forest_classifier/histplot_time_balanced.png
+ create mode 100644 housing.ipynb
+ create mode 100644 scripts/archive/5_last_100_feature_getter.py
+ create mode 100644 scripts/archive/account_wiide_achievement_getter.py
+ create mode 100644 scripts/archive/achievement_categorizer.py
+ create mode 100644 scripts/archive/achievement_processor.py
+ create mode 100644 scripts/archive/achievementmaker.py
+ create mode 100644 subscript/subscript/.ipynb_checkpoints/02_feature_explorer-checkpoint.ipynb
+ rewrite subscript/subscript/.ipynb_checkpoints/02_timeseries_explorer-checkpoint.ipynb (69%)
+ create mode 100644 subscript/subscript/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ create mode 100644 subscript/subscript/.ipynb_checkpoints/Untitled1-checkpoint.ipynb
+ create mode 100644 subscript/subscript/.ipynb_checkpoints/XGBoost-checkpoint.ipynb
+ create mode 100644 subscript/subscript/02_feature_explorer.ipynb
+ rewrite subscript/subscript/02_timeseries_explorer.ipynb (69%)
+ create mode 100644 subscript/subscript/XGBoost.ipynb
+ create mode 100644 subscript/subscript/feature_wrapper_classifier.py
+ rename subscript/subscript/{feature_wrapper.py => feature_wrapper_reggression.py} (63%)
+ create mode 100644 subscript/subscript/important_features_list.py
+ create mode 100644 subscript/subscript/main.py
+ rename subscript/subscript/{p10000.py => p9000.py} (92%)
+ rewrite subscript/subscript/player_lapse_predictor.py (79%)
+ create mode 100644 subscript/subscript/streamlit.py
+ create mode 100644 subscript/subscript/subscript.jpg
+ create mode 100644 subscript/subscript/subscript.py
+ delete mode 100644 subscript/subscript/xgboost.py
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % git push origin master
+Enumerating objects: 78, done.
+Counting objects: 100% (78/78), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (52/52), done.
+Writing objects: 100% (53/53), 1.30 MiB | 5.29 MiB/s, done.
+Total 53 (delta 25), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (25/25), completed with 19 local objects.
+To https://github.com/haleyspeed/insight_data_science.git
+   d49a380..a86751e  master -> master
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % python random_forest_time.py
+/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/Resources/Python.app/Contents/MacOS/Python: can't open file 'random_forest_time.py': [Errno 2] No such file or directory
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % cd insight_data_science/subscript/subscript
+cd: no such file or directory: insight_data_science/subscript/subscript
+(ins_env) haleyspeed@Haleys-MacBook-Pro insight_data_science % cd subscript/subscript
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+^[[B/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2015-10
+4 2014-04
+5 2014-09
+6 2016-04
+7 2016-03
+8 2016-05
+9 2014-08
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2017-02
+16 2015-03
+17 2017-03
+18 2015-08
+19 2015-06
+20 2015-11
+21 2015-02
+22 2016-01
+23 2014-10
+24 2018-05
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.850498281638946
+Making confusion matrix...
+[[26455   588     3]
+ [ 4122  6004    20]
+ [  537   414   557]]
+              precision    recall  f1-score   support
+
+           0      0.850     0.978     0.910     27046
+           1      0.857     0.592     0.700     10146
+           2      0.960     0.369     0.534      1508
+
+    accuracy                          0.853     38700
+   macro avg      0.889     0.646     0.714     38700
+weighted avg      0.856     0.853     0.840     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-09
+4 2014-04
+5 2015-10
+6 2014-08
+7 2016-04
+8 2016-03
+9 2016-05
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2015-03
+16 2017-02
+17 2017-03
+18 2015-08
+19 2015-06
+20 2016-01
+21 2015-02
+22 2018-05
+23 2015-11
+24 2014-10
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8488962006563364
+Making confusion matrix...
+[[26436   607     3]
+ [ 4201  5926    19]
+ [  555   383   570]]
+              precision    recall  f1-score   support
+
+           0      0.848     0.977     0.908     27046
+           1      0.857     0.584     0.695     10146
+           2      0.963     0.378     0.543      1508
+
+    accuracy                          0.851     38700
+   macro avg      0.889     0.647     0.715     38700
+weighted avg      0.854     0.851     0.838     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2016-03
+5 2014-09
+6 2015-10
+7 2014-08
+8 2016-06
+9 2016-04
+10 2016-05
+11 2016-02
+12 2015-06
+13 2015-05
+14 2015-09
+15 2015-04
+16 2015-03
+17 2015-02
+18 2017-02
+19 2017-03
+20 2015-08
+21 2016-01
+22 2014-10
+23 2015-07
+24 2016-12
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8442277711263663
+Making confusion matrix...
+[[26555   487     4]
+ [ 4502  5622    22]
+ [  652   275   581]]
+              precision    recall  f1-score   support
+
+           0      0.837     0.982     0.904     27046
+           1      0.881     0.554     0.680     10146
+           2      0.957     0.385     0.549      1508
+
+    accuracy                          0.846     38700
+   macro avg      0.892     0.640     0.711     38700
+weighted avg      0.853     0.846     0.831     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2016-03
+5 2014-09
+6 2014-08
+7 2016-04
+8 2015-10
+9 2016-05
+10 2016-06
+11 2016-02
+12 2015-09
+13 2015-04
+14 2015-03
+15 2017-02
+16 2015-05
+17 2015-08
+18 2015-02
+19 2015-06
+20 2017-03
+21 2016-01
+22 2014-10
+23 2015-11
+24 2015-07
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8415059561236531
+Making confusion matrix...
+[[26430   611     5]
+ [ 4561  5567    18]
+ [  651   270   587]]
+              precision    recall  f1-score   support
+
+           0      0.835     0.977     0.901     27046
+           1      0.863     0.549     0.671     10146
+           2      0.962     0.389     0.554      1508
+
+    accuracy                          0.842     38700
+   macro avg      0.887     0.638     0.709     38700
+weighted avg      0.848     0.842     0.827     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2016-03
+5 2014-09
+6 2015-10
+7 2014-08
+8 2016-04
+9 2016-06
+10 2016-02
+11 2016-05
+12 2015-09
+13 2015-03
+14 2015-06
+15 2015-04
+16 2015-05
+17 2017-03
+18 2015-08
+19 2017-02
+20 2015-02
+21 2016-01
+22 2014-10
+23 2018-05
+24 2016-12
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8417729696207547
+Making confusion matrix...
+[[26455   587     4]
+ [ 4530  5596    20]
+ [  667   250   591]]
+              precision    recall  f1-score   support
+
+           0      0.836     0.978     0.901     27046
+           1      0.870     0.552     0.675     10146
+           2      0.961     0.392     0.557      1508
+
+    accuracy                          0.843     38700
+   macro avg      0.889     0.641     0.711     38700
+weighted avg      0.850     0.843     0.829     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2014-08
+7 2016-03
+8 2016-04
+9 2016-05
+10 2016-02
+11 2016-06
+12 2015-05
+13 2015-04
+14 2015-09
+15 2015-03
+16 2017-02
+17 2015-06
+18 2017-03
+19 2015-08
+20 2016-01
+21 2015-02
+22 2015-11
+23 2014-10
+24 2018-05
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8503604682210871
+Making confusion matrix...
+[[26460   581     5]
+ [ 4146  5979    21]
+ [  539   388   581]]
+              precision    recall  f1-score   support
+
+           0      0.850     0.978     0.909     27046
+           1      0.861     0.589     0.700     10146
+           2      0.957     0.385     0.549      1508
+
+    accuracy                          0.853     38700
+   macro avg      0.889     0.651     0.719     38700
+weighted avg      0.857     0.853     0.840     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2016-04
+7 2016-05
+8 2016-03
+9 2014-08
+10 2016-06
+11 2015-04
+12 2015-05
+13 2016-02
+14 2015-09
+15 2015-03
+16 2017-02
+17 2015-08
+18 2017-03
+19 2015-06
+20 2016-01
+21 2015-11
+22 2015-02
+23 2014-10
+24 2018-05
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8512218020827053
+Making confusion matrix...
+[[26428   615     3]
+ [ 4075  6047    24]
+ [  528   414   566]]
+              precision    recall  f1-score   support
+
+           0      0.852     0.977     0.910     27046
+           1      0.855     0.596     0.702     10146
+           2      0.954     0.375     0.539      1508
+
+    accuracy                          0.854     38700
+   macro avg      0.887     0.649     0.717     38700
+weighted avg      0.856     0.854     0.841     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2016-04
+7 2016-03
+8 2014-08
+9 2016-05
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2015-03
+16 2015-08
+17 2017-02
+18 2017-03
+19 2015-06
+20 2014-10
+21 2016-01
+22 2015-11
+23 2015-02
+24 2018-05
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8510323086331493
+Making confusion matrix...
+[[26406   637     3]
+ [ 4105  6018    23]
+ [  521   413   574]]
+              precision    recall  f1-score   support
+
+           0      0.851     0.976     0.909     27046
+           1      0.851     0.593     0.699     10146
+           2      0.957     0.381     0.545      1508
+
+    accuracy                          0.853     38700
+   macro avg      0.886     0.650     0.718     38700
+weighted avg      0.855     0.853     0.840     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2016-03
+7 2016-04
+8 2016-05
+9 2014-08
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2017-03
+16 2015-08
+17 2015-03
+18 2017-02
+19 2015-06
+20 2015-02
+21 2014-10
+22 2015-11
+23 2016-01
+24 2017-07
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8553389779412398
+Making confusion matrix...
+[[26330   713     3]
+ [ 3832  6290    24]
+ [  443   494   571]]
+              precision    recall  f1-score   support
+
+           0      0.860     0.974     0.913     27046
+           1      0.839     0.620     0.713     10146
+           2      0.955     0.379     0.542      1508
+
+    accuracy                          0.858     38700
+   macro avg      0.885     0.657     0.723     38700
+weighted avg      0.858     0.858     0.846     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2015-10
+4 2014-04
+5 2014-09
+6 2016-03
+7 2016-04
+8 2014-08
+9 2016-05
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2015-03
+16 2017-03
+17 2015-08
+18 2015-06
+19 2017-02
+20 2014-10
+21 2015-02
+22 2015-11
+23 2016-01
+24 2016-12
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8541072705191259
+Making confusion matrix...
+[[26368   674     4]
+ [ 3924  6197    25]
+ [  485   454   569]]
+              precision    recall  f1-score   support
+
+           0      0.857     0.975     0.912     27046
+           1      0.846     0.611     0.709     10146
+           2      0.952     0.377     0.540      1508
+
+    accuracy                          0.856     38700
+   macro avg      0.885     0.654     0.721     38700
+weighted avg      0.858     0.856     0.844     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2016-03
+7 2016-05
+8 2016-04
+9 2014-08
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2017-03
+16 2015-03
+17 2017-02
+18 2015-08
+19 2015-06
+20 2015-02
+21 2015-11
+22 2016-01
+23 2014-10
+24 2018-05
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8549255376876631
+Making confusion matrix...
+[[26342   701     3]
+ [ 3859  6264    23]
+ [  478   468   562]]
+              precision    recall  f1-score   support
+
+           0      0.859     0.974     0.913     27046
+           1      0.843     0.617     0.713     10146
+           2      0.956     0.373     0.536      1508
+
+    accuracy                          0.857     38700
+   macro avg      0.886     0.655     0.721     38700
+weighted avg      0.858     0.857     0.846     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2016-03
+7 2016-05
+8 2016-04
+9 2014-08
+10 2016-06
+11 2015-05
+12 2015-04
+13 2015-09
+14 2016-02
+15 2017-02
+16 2015-03
+17 2015-08
+18 2017-03
+19 2015-06
+20 2014-10
+21 2015-02
+22 2016-01
+23 2015-11
+24 2016-12
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8539436170854184
+Making confusion matrix...
+[[26368   675     3]
+ [ 3906  6218    22]
+ [  469   467   572]]
+              precision    recall  f1-score   support
+
+           0      0.858     0.975     0.913     27046
+           1      0.845     0.613     0.710     10146
+           2      0.958     0.379     0.543      1508
+
+    accuracy                          0.857     38700
+   macro avg      0.887     0.656     0.722     38700
+weighted avg      0.858     0.857     0.845     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+Important Features...
+0 2014-05
+1 2014-07
+2 2014-06
+3 2014-04
+4 2015-10
+5 2014-09
+6 2016-04
+7 2016-03
+8 2016-05
+9 2014-08
+10 2016-06
+11 2015-05
+12 2016-02
+13 2015-04
+14 2015-09
+15 2015-03
+16 2017-02
+17 2017-03
+18 2015-08
+19 2015-06
+20 2015-11
+21 2014-10
+22 2015-02
+23 2016-01
+24 2015-07
+Making predictions...
+Getting accuracy score...
+0.9998018932118279
+Oob score...
+0.8545810041430159
+Making confusion matrix...
+[[26320   723     3]
+ [ 3839  6286    21]
+ [  465   467   576]]
+              precision    recall  f1-score   support
+
+           0      0.859     0.973     0.913     27046
+           1      0.841     0.620     0.713     10146
+           2      0.960     0.382     0.546      1508
+
+    accuracy                          0.857     38700
+   macro avg      0.887     0.658     0.724     38700
+weighted avg      0.858     0.857     0.846     38700
+
+Plotting the confusion matrix...
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python random_forest_time.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Start random forest...
+^CTraceback (most recent call last):
+  File "random_forest_time.py", line 48, in <module>
+    selected.fit(X_train, y_train)
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/ensemble/_forest.py", line 383, in fit
+    for i, t in enumerate(trees))
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/parallel.py", line 1007, in __call__
+    while self.dispatch_one_batch(iterator):
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/parallel.py", line 835, in dispatch_one_batch
+    self._dispatch(tasks)
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/parallel.py", line 754, in _dispatch
+    job = self._backend.apply_async(batch, callback=cb)
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/_parallel_backends.py", line 209, in apply_async
+    result = ImmediateResult(func)
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/_parallel_backends.py", line 590, in __init__
+    self.results = batch()
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/parallel.py", line 256, in __call__
+    for func, args, kwargs in self.items]
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/joblib/parallel.py", line 256, in <listcomp>
+    for func, args, kwargs in self.items]
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/ensemble/_forest.py", line 165, in _parallel_build_trees
+    tree.fit(X, y, sample_weight=curr_sample_weight, check_input=False)
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/tree/_classes.py", line 876, in fit
+    X_idx_sorted=X_idx_sorted)
+  File "/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/tree/_classes.py", line 367, in fit
+    builder.build(self.tree_, X, y, sample_weight, X_idx_sorted)
+KeyboardInterrupt
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % player_lapse_predictor
+zsh: command not found: player_lapse_predictor
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % python player_lapse_predictor.py
+/Users/haleyspeed/Docs/insight/ins_env/lib/python3.7/site-packages/sklearn/utils/deprecation.py:144: FutureWarning: The sklearn.ensemble.forest module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.ensemble. Anything that cannot be imported from sklearn.ensemble is now part of the private API.
+  warnings.warn(message, FutureWarning)
+Reading in File...
+Preparing test set...
+Predicting engagement status... 
+Printing predictions....
+            player         realm  gear_score  ...  status pred  actual
+0            edkin      icecrown       478.0  ...  active    0     0.0
+1        woodwings       dentarg       427.0  ...  active    0     0.0
+2        mánnoroth      ragnaros       475.0  ...  active    0     0.0
+3          mardall     stormrage       435.0  ...  active    0     0.0
+4           volski   stormreaver       405.0  ...    risk    1     1.0
+...            ...           ...         ...  ...     ...  ...     ...
+38695   drakengard       draenor       429.0  ...  active    0     0.0
+38696  stellastarr        zuljin       447.0  ...  active    0     0.0
+38697  emeraldiron  lightbringer       389.0  ...  active    0     0.0
+38698     peehuzzi        zuljin       353.0  ...  active    0     0.0
+38699      sqùishy       illidan       470.0  ...  active    0     0.0
+
+[38700 rows x 83 columns]
+(ins_env) haleyspeed@Haleys-MacBook-Pro subscript % 

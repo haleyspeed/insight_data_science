@@ -8,7 +8,7 @@ import glob
 
 # Setup IO
 f_cat = os.path.join(cn.clean_dir,'6-13_achievement_list.csv')
-folder = os.path.join(cn.processed_dir, '6-10_scrapes')
+folder = os.path.join(cn.processed_dir, '6-15_scrapes')
 
 # Read in the list of categories with achievements
 dfc = pd.read_csv(f_cat)
@@ -53,7 +53,7 @@ for f in glob.glob('*{}'.format('csv')):
     for index, row in dfr.iloc[:][:].iterrows():
 
         # Format output file
-        f_out = os.path.join(cn.processed_dir, '6-10_scrapes', 'processed_6-10-20',
+        f_out = os.path.join(cn.processed_dir, '6-15_scrapes', 'processed',
                 'time', f.replace('wow', 'time'))
 
         # Convert date to month

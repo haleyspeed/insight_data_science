@@ -8,8 +8,8 @@ import pandas as pd
 
 risk = 60
 lapsed = 180
-dir_in = os.path.join(os.path.join(cn.processed_dir, '6-10_scrapes',
-        'processed_6-10-20','time'))
+dir_in = os.path.join(os.path.join(cn.processed_dir, '6-15_scrapes',
+        'processed','time'))
 file_in = os.path.join(dir_in, '*{}')
 
 os.chdir (dir_in)

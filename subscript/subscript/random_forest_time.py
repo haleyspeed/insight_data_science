@@ -13,9 +13,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
 
-df = pd.read_csv(os.path.join(cn.clean_dir, 'final_time_stats.csv'))
-train_set = pd.read_csv(os.path.join(cn.clean_dir,'time_stratified_train.csv'))
-test_set = pd.read_csv(os.path.join(cn.clean_dir,'time_stratified_test.csv'))
+df = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
+        'final_time_stats.csv'))
+train_set = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
+        'time_stratified_train.csv'))
+test_set = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
+        'time_stratified_test.csv'))
 
 #drop_cols = ['id']
 #train_set = train_set.drop(drop_cols)
@@ -38,13 +41,13 @@ fig1.savefig(os.path.join(cn.clean_dir, 'random_forest_classifier',
 
 print("Start random forest...")
 from sklearn.ensemble import RandomForestClassifier
-#class_weight = dict({0:.5, 1:1, 2:8})
-#selected = RandomForestClassifier(bootstrap=True,
-#            class_weight=class_weight, n_estimators=300,
-#            oob_score=True,random_state=17)
+class_weight = dict({0:.92, 1:1.23, 2:5.46})
+selected = RandomForestClassifier(bootstrap=True,
+            class_weight=class_weight, n_estimators=300,
+            oob_score=True,random_state=17)
 
-selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
-            oob_score = True,bootstrap = True,random_state = 17)
+#selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
+#            oob_score = True,bootstrap = True,random_state = 17)
 selected.fit(X_train, y_train)
 
 

@@ -14,15 +14,22 @@ import seaborn as sns
 import pickle
 
 df = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
-        'final_time_stats.csv'))
+        'final_time_stats.csv'),dtype = 'unicode')
+df = df.drop_duplicates()
+df = df.fillna(0)
 train_set = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
         'time_stratified_train.csv'))
+train_set = train_set.drop_duplicates()
+train_set = train_set.fillna(0)
 test_set = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
         'time_stratified_test.csv'))
+test_set = test_set.drop_duplicates()
+test_set = test_set.fillna(0)
+
+
 
 #drop_cols = ['id']
 #train_set = train_set.drop(drop_cols)
-
 
 y_train = train_set.engagement
 X_train = train_set.drop('engagement',axis = 1)
@@ -41,7 +48,7 @@ fig1.savefig(os.path.join(cn.clean_dir, 'random_forest_classifier',
 
 print("Start random forest...")
 from sklearn.ensemble import RandomForestClassifier
-class_weight = dict({0:.92, 1:1.23, 2:5.46})
+class_weight = dict({0:.9, 1:1.23, 2:5.45})
 selected = RandomForestClassifier(bootstrap=True,
             class_weight=class_weight, n_estimators=300,
             oob_score=True,random_state=17)

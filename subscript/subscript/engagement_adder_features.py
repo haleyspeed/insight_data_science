@@ -25,11 +25,11 @@ for f in glob.glob('*{}'.format('csv')):
             df.at[index,'engagement'] = 0
             df.at[index,'status'] = 'active'
             continue
-        elif int(row.time_since_login.split(' ')[0]) <= 90:
+        elif int(row.time_since_login.split(' ')[0]) <= 240:
             df.at[index,'engagement'] = 1
             df.at[index,'status'] = 'risk'
             continue
-        elif int(row.time_since_login.split(' ')[0]) >90:
+        elif int(row.time_since_login.split(' ')[0]) >240:
             df.at[index,'engagement'] = 2
             df.at[index,'status'] = 'lapsed'
             continue

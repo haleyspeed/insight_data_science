@@ -13,7 +13,7 @@ import joblib
 import matplotlib.pyplot as plt
 
 print('Reading in File...')
-df = pd.read_csv(os.path.join(cn.clean_dir, 'whole_test_set.csv'))
+df = pd.read_csv(os.path.join(cn.clean_dir, 'random_forest_classifier','whole_test_set.csv'))
 dfo = df.copy()
 model = joblib.load(os.path.join(cn.clean_dir,'pickles', 'final_time_model.sav'))
 features = ['player', 'realm','last_login', 'time_since_login',
@@ -21,7 +21,8 @@ features = ['player', 'realm','last_login', 'time_since_login',
 
 print('Preparing test set...')
 y = df.engagement
-X = df.drop(features, axis = 1)
+X = df.fillna(0).drop(features, axis = 1)
+print(X)
 
 print('Predicting engagement status... ')
 pred = model.predict(X)
@@ -30,7 +31,7 @@ dfo['actual'] = y
 
 print('Printing predictions....')
 print_cols = features + ['pred']
-print(dfo)
+#print(dfo)
 
 # Add 1-5 achievements in the next month
 i = 1

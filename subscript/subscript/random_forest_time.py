@@ -48,7 +48,7 @@ fig1.savefig(os.path.join(cn.clean_dir, 'random_forest_classifier',
 
 print("Start random forest...")
 from sklearn.ensemble import RandomForestClassifier
-class_weight = dict({0:.9, 1:1.23, 2:5.45})
+class_weight = dict({0:.9, 1:1.23, 2:5.46})
 selected = RandomForestClassifier(bootstrap=True,
             class_weight=class_weight, n_estimators=300,
             oob_score=True,random_state=17)

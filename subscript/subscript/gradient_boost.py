@@ -3,14 +3,10 @@ import pandas as pd
 import numpy as np
 import custom_funcs as cf
 import os
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
-from sklearn import preprocessing
-from sklearn.model_selection import ShuffleSplit
-from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn import metrics
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pickle
 
 df = pd.read_csv(os.path.join(cn.clean_dir,'random_forest_classifier',
@@ -35,15 +31,30 @@ y_train = train_set.engagement
 X_train = train_set.drop(['2020-05','engagement'],axis = 1)
 y_test = test_set.engagement
 X_test = test_set.drop(['2020-05','engagement'],axis = 1)
-encoder = preprocessing.LabelEncoder() # get a type error if not encoded
-y_train = encoder.fit_transform(y_train)
-y_test = encoder.fit_transform(y_test)
 
 
 
+# Gradient Boost
+clf = GradientBoostingClassifier(random_state = 17)
+clf.fit(X_train, y_train)
+GradientBoostingClassifier(random_state = 17)
+predictions = clf.predict(X_test)
+score = clf.score(X_test, y_test)
+
+print (prediction)
+print(clf.score)
+
+cnf_matrix = metrics.confusion_matrix(y_test,predictions)
+print(cnf_matrix)
+
+# Print the precision and recall, among other metrics
+met = metrics.classification_report(y_test, predictions, digits=3)
+folder = os.path.join(cn.clean_dir, 'random_forest_classifier',)
+f_name = 'metrics_time_balanced_metrics.csv'
+print(met)
 
 # save the model to disk
-pickle_name = 'final_time_model.sav'
-os.chdir(os.path.join(cn.clean_dir,'random_forest_classifier'))
-with open(pickle_name, 'wb') as file:
-    pickle.dump(selected, file)
+#pickle_name = 'final_boost_model.sav'
+#os.chdir(os.path.join(cn.clean_dir,'gradient_boost'))
+#with open(pickle_name, 'wb') as file:
+#    pickle.dump(clf, file)

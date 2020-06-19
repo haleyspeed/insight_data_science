@@ -4,30 +4,44 @@ import os
 import config as cn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score
+from mlxtend.feature_selection import SequentialFeatureSelector
+from sklearn.model_selection import StratifiedShuffleSplit
+import numpy as np
 
 # Read in data and set p value Elimination
-p_limit = 0.05
-df = pd.read_csv(os.path.join(cn.clean_dir,'final_feature_stats.csv'), dtype = 'unicode')
-dfa = pd.read_csv(os.path.join(cn.clean_dir, 'achievement_short_list.csv'))
-keep = [str(int(c)) for c in dfa.achievement_id]
-if 'id' not in df.columns.values:
-    df['id'] = df.player + '_' + df.realm
-keep = keep + ['engagement','id']
-keep = [c for c in keep if c in df.columns.values]
-df = df[keep]
-df = df.set_index('id')
-
-df = df.astype(str).apply(lambda x: x.str[:1]).replace('n','0')
+df = pd.read_csv(os.path.join(cn.clean_dir,'final_aggregated_categories.csv'), dtype = 'unicode')
+player_cols =  ['Unnamed: 0','Unnamed: 0.1','player','realm','gear_score','last_login',
+            'time_since_login','status']
+df = df.drop(player_cols, axis = 1)
+print(df.head())
 dfp = pd.DataFrame()
 
-y = df.engagement.astype(float)
-X = sm.add_constant(df).astype(float)
-feature_selector = ExhaustiveFeatureSelector(RandomForestClassifier(n_jobs=-1),
-           min_features=2,
-           max_features=4,
+df = df[df.engagement.astype(float) != 1]
+split = StratifiedShuffleSplit(n_splits = 10, test_size = 0.25, random_state = 17)
+for train_index, test_index in split.split(df, df.engagement):
+    strat_train = df.iloc[train_index][:]
+    strat_test = df.iloc[test_index][:]
+
+y_train = strat_train.engagement
+X_train = strat_train.drop('engagement', axis = 1)
+y_test = strat_train.engagement
+X_test = strat_test.drop('engagement', axis = 1)
+
+feature_selector = SequentialFeatureSelector(RandomForestClassifier(n_jobs=1),
+           k_features=15,
+           forward=True,
+           verbose=2,
            scoring='roc_auc',
-           print_progress=True,
-           cv=2)
-features = feature_selector.fit(np.array(X, y)
-filtered_features= train_features.columns[list(features.k_feature_idx_)]
+           cv=4)
+features = feature_selector.fit(np.array(X_train.fillna(0)), y_train)
+filtered_features = train_features.columns[list(features.k_feature_idx_)]
 print(filtered_features)
+
+clf = RandomForestClassifier(n_estimators=100, random_state=17, max_depth=3)
+clf.fit(X_train[filtered_features], y_train)
+
+train_pred = clf.predict_proba(X_train[filtered_features])
+print('Accuracy on training set: {}'.format(roc_auc_score(X_train, train_pred[:,1])))
+
+test_pred = clf.predict_proba(X_test[filtered_features].fillna(0))
+print('Accuracy on test set: {}'.format(roc_auc_score(y_test, test_pred [:,1])))

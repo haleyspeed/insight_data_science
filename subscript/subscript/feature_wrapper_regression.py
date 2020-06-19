@@ -9,18 +9,12 @@ from sklearn.linear_model import RidgeCV, LassoCV, Ridge, Lasso
 
 
 # Read in data and set p value Elimination
-p_limit = 0.05
-df = pd.read_csv(os.path.join(cn.clean_dir,'final_feature_stats.csv'), dtype = 'unicode')
-dfa = pd.read_csv(os.path.join(cn.clean_dir, 'achievement_short_list.csv'))
-keep = [str(int(c)) for c in dfa.achievement_id]
-if 'id' not in df.columns.values:
-    df['id'] = df.player + '_' + df.realm
-keep = keep + ['engagement','id']
-keep = [c for c in keep if c in df.columns.values]
-df = df[keep]
-df = df.set_index('id')
-
-df = df.astype(str).apply(lambda x: x.str[:1]).replace('n','0')
+p_limit = 0.0001
+df = pd.read_csv(os.path.join(cn.clean_dir,'final_aggregated_categories.csv'), dtype = 'unicode')
+player_cols =  ['Unnamed: 0','Unnamed: 0.1','player','realm','gear_score','last_login',
+            'time_since_login','status']
+df = df.drop(player_cols, axis = 1)
+print(df.head())
 dfp = pd.DataFrame()
 
 y = df.engagement.astype(float)

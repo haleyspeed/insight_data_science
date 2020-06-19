@@ -10,8 +10,8 @@ print('Loading data...')
 #df = pd.read_csv(os.path.join(cn.clean_dir, 'final_feature_stats.csv'),
         #dtype = 'unicode')
 df = pd.read_csv(os.path.join(cn.processed_dir,'6-15_scrapes',
-        'processed', 'features', 'engaged',
-        'engaged_6-8_dates_9000_22300.csv'),dtype = 'unicode')
+        'processed', 'features', 'engaged','concats',
+        'concat_feature_stats_2250.csv'),dtype = 'unicode')
 
 # Make sure there is a unique ID column in the player_stats data
 print('Checking unique ids....')

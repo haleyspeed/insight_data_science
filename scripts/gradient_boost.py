@@ -41,7 +41,7 @@ GradientBoostingClassifier(random_state = 17)
 predictions = clf.predict(X_test)
 score = clf.score(X_test, y_test)
 
-print (prediction)
+print (predictionz)
 print(clf.score)
 
 cnf_matrix = metrics.confusion_matrix(y_test,predictions)

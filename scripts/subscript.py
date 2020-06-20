@@ -1,5 +1,4 @@
 import sys
-
 import streamlit as st
 import pandas as pd
 import config as cn
@@ -60,9 +59,9 @@ def update_plot(fig, ax, df_results):
     ax.set_xlim(0.5, 5.5)
     ax.set_ylim(0,y5 + y5 *0.5)
     ax.set_ylabel('Estimated Revenue Recovered \n (per $1000 USD) \n', fontsize = 18)
-    ax.set_xlabel('\n Additional Achievements Completed', fontsize = 18)
+    ax.set_xlabel('\n Additional Content Completed', fontsize = 18)
     plt.tight_layout()
-    st.sidebar.pyplot()
+    main_bottom.pyplot()
     return retained
 #@st.cache
 # Set default variables
@@ -71,68 +70,71 @@ get_recs = False
 sub_cost = 15
 df_results = pd.DataFrame(columns = df.columns.values)
 x = 0
-features = ['player', 'realm','last_login', 'time_since_login',
-           'engagement', 'status','pred', 'pred1', 'pred2', 'pred3',
-           'pred4', 'pred5']
+features = ['player', 'realm','gear_score','last_login','status']
 
 
-# Setup main window
+# Setup main window at start
 df_results = df[df.engagement == '1.0'].drop_duplicates()
-st.title('SubScript')
+main_top = st.image('subscript_full.jpg')
+
+#st.title('SubScript')
 st.subheader('Boosting subscription volume with targeted content')
 st.markdown('\n')
-
-# Refine the selected dataset by server
-#st.sidebar.markdown('\n')
-#st.sidebar.subheader('Refine By Server ID')
-#server_name = st.sidebar.selectbox("", df_results.realm.unique())
-#st.sidebar.markdown('\n')
-#if server_name.lower() != '':
-#    df_results = df_results[df_results.realm == server_name.lower()]
-#    retained = list()
-#    for i in np.arange(1,6):
-#        hyp = df_results[df_results['pred' + str(i)] == '0'].player.values
-#        retained.append(len(hyp))
-#    y1 = retained[0] * sub_cost / 1000
-#    y2 = retained[1] * sub_cost / 1000
-#    y3 = retained[2] * sub_cost / 1000
-#    y4 = retained[3] * sub_cost / 1000
-#    y5 = retained[4] * sub_cost / 1000
-#    st.sidebar.bar_chart([y1,y2,y3,y4,y5])
-
-
-# Delay appearance of side bar
-#time.sleep(10)
-
-# Puts the Maximum ROI on the sidebar
-st.write ('\n')
-st.sidebar.subheader('Estimated Return on Investment')
 fig, ax = plt.subplots()
-retained = update_plot(fig, ax, df_results)
-sample_size = len(df_results.player)
-#st.sidebar.markdown(sample_size)
-percent_recovery = []
-for i in np.arange(0,5):
-    percent_recovery.append(round(100*(retained[i])/sample_size,1))
-st.sidebar.markdown('## Estimated decrease in lapsed subscribers: ')
-st.sidebar.markdown('1 additional achievement: ' + str(percent_recovery[0]) + '%')
-st.sidebar.markdown('2 additional achievements: ' + str(percent_recovery[1])+ '%')
-st.sidebar.markdown('3 additional achievements: ' + str(percent_recovery[2])+ '%')
-st.sidebar.markdown('4 additional achievements: '+ str(percent_recovery[3])+ '%')
-st.sidebar.markdown('5 additional achievements: '+ str(percent_recovery[4])+ '%')
+main_bottom = st.empty()
 
+# Action to get At-Risk Players
+st.sidebar.markdown(' ')
+st.sidebar.subheader('Predict Player Engagement')
+start = st.sidebar.button('Get At-Risk Players')
+if start:
+    main_top.image('subscript.jpg')
+    main_bottom.table(df_results[features])
+
+# Setup sidebar at start
+side1 = st.sidebar.empty()
+side2 = st.sidebar.empty()
+side3 = st.sidebar.empty()
+side4 = st.sidebar.empty()
+
+# Action for Get Recommendations button
 st.sidebar.markdown(' ')
 recs = get_recommendations(df_rec)
-rec_list = st.sidebar.button('Get Curated Recommendations')
+rec_list = side1.subheader('Content Recommendations')
+rec_list = side2.button('Get Curated Recommendations')
 if rec_list:
-    st.sidebar.subheader(recs[0][1])
-    st.sidebar.markdown(recs[0][2])
-    st.sidebar.subheader(recs[1][1])
-    st.sidebar.markdown(recs[1][2])
-    st.sidebar.subheader(recs[2][1])
-    st.sidebar.markdown(recs[2][2])
-    st.sidebar.subheader(recs[3][1])
-    st.sidebar.markdown(recs[3][2])
-    st.sidebar.subheader(recs[4][1])
-    st.sidebar.markdown(recs[4][2])
-st.table(df_results[features])
+    main_top.empty()
+    main_top.image('subscript.jpg')
+    main_bottom.empty()
+    st.subheader(recs[0][1])
+    st.write(recs[0][2])
+    st.subheader(recs[1][1])
+    st.write(recs[1][2])
+    st.subheader(recs[2][1])
+    st.write(recs[2][2])
+    st.subheader(recs[3][1])
+    st.write(recs[3][2])
+    st.subheader(recs[4][1])
+    st.write(recs[4][2])
+
+# Action for "Calculate ROI"
+st.write ('\n')
+side3.subheader('Estimated Return on Investment')
+calc = side4.button('Calculate ROI')
+if calc:
+    main_top.empty()
+    main_bottom.empty()
+    main_top.image('subscript.jpg')
+
+    retained = update_plot(fig, ax, df_results)
+    sample_size = len(df_results.player)
+    #st.sidebar.markdown(sample_size)
+    percent_recovery = []
+    for i in np.arange(0,5):
+        percent_recovery.append(round(100*(retained[i])/sample_size,1))
+    st.sidebar.subheader('Estimated Conversion from At-Risk to Active Status: ')
+    st.sidebar.markdown('1 additional activity: ' + str(percent_recovery[0]) + '%')
+    st.sidebar.markdown('2 additional activities: ' + str(percent_recovery[1])+ '%')
+    st.sidebar.markdown('3 additional activities: ' + str(percent_recovery[2])+ '%')
+    st.sidebar.markdown('4 additional activities: '+ str(percent_recovery[3])+ '%')
+    st.sidebar.markdown('5 additional activities: '+ str(percent_recovery[4])+ '%')

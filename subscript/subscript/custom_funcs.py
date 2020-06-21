@@ -104,11 +104,11 @@ def unpack_wowprogress_guild_ranks(locale):
     return df
 
 
-def get_wowprogress_by_realm (locale, namespace,base_url):
+def get_wowprogress_by_realm (locale, namespace,base_url, access_token):
     """Gets the realm list from the Blizzard API then scrapes the wowprogress.com website
     for guild rankings"""
     namespace = 'dynamic-us'
-    realm_names, realm_ids, realm_slugs = bapi.get_wow_realms_list(namespace, locale)
+    realm_names, realm_ids, realm_slugs = get_wow_realms_list(namespace, locale, access_token)
     http = httplib2.Http()
     status, response = http.request(base_url)
     df = pd.DataFrame()
@@ -120,8 +120,7 @@ def get_wowprogress_by_realm (locale, namespace,base_url):
                     print('Downloading: ' + link)
                     get_wowprogress_rank_list(link, locale, base_url,df)
 
-
-def get_wow_achievements_category(namespace, locale):
+def get_wow_achievements_category(namespace, locale, access_token):
     directory = 'data/wow/achievement-category/index'
     url = 'https://us.api.blizzard.com/'+ directory +'?namespace='+ namespace + \
       '&locale=' + locale + '&access_token='+ access_token
@@ -235,7 +234,7 @@ def get_wow_achievement_list (locale):
     return df
 
 
-def get_wow_realms_list (namespace, locale):
+def get_wow_realms_list (namespace, locale, access_token):
     """Retrieves a list of reams and their ids using the Blizzard API"""
     directory = 'data/wow/realm/index'
     url = 'https://us.api.blizzard.com/' + directory + '?namespace=' + namespace + \
@@ -534,95 +533,40 @@ def metrics_formatter(mets, folder, f_name):
     df.to_csv(f_name)
     return df
 
-def random_forest_feature_selection (df_tree, group):
-    print("Making training and test sets....")
-    rs = ShuffleSplit(n_splits=10, test_size=.25, random_state=17)
+def create_database(cursor, DB_NMAE):
+    try:
+        cursor.execute(
+            "CREATE DATABASE: {} DEFAULT CHARACTER SET 'utf8'".format(DB_NAME))
+    except mysql.connector.Error as err:
+        print("Create database failed {}:".format(err))
+        exit(1)
 
-    for train_index, test_index in rs.split(df_tree):
-        train_set = df_tree.iloc[train_index].copy()
-        test_set = df_tree.iloc[test_index].copy()
-        #print(train_set.head())
+def locate_database(cursor, DB_NAME):
+    """Change to the database indicated by DB_NAME"""
+    try:
+        cursor.execute("USE {}".format(DB_NAME))
+        print("Database {}".format(DB_NAME), " is active.")
+    except mysql.connector.Error as err:
+        print("Database {} does note exist.".format(DB_NAME))
+        if err.errno == errorcode.ER_BAD_DB_ERROR:
+            mysql_manager.create_database(cursor, DB_NMAE)
+            print("Database {} created successfully.".format(DB_NAME))
+            cnx.database = DB_NAME
+        else:
+            print(err)
+            exit(1)
 
-    y_train = train_set.engagement
-    X_train = train_set.drop('engagement',axis = 1)
-    y_test = test_set.engagement
-    X_test = test_set.drop('engagement',axis = 1)
-    #encoder = preprocessing.LabelEncoder() # get a type error if not encoded
-    y_train = y_train
-    y_test = y_test
-
-
-
-    print("Start random forest...")
-    selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
-                           oob_score = False,bootstrap = False,random_state = 17)
-    selected.fit(X_train, y_train)
-
-    #print('predictions')
-    #print(selected.predict(X_test))
-    print("Important Features...")
-    os.chdir(os.path.join(config.clean_dir))
-    dfa = pd.read_csv('achievement_details_list.csv')
-    importances = selected.feature_importances_
-    indices = np.argsort(importances)
-    print('importances:')
-    for imp in importances[:100]:
-        print(imp)
-    print('indices')
-    for ind in indices[:100]:
-        print(ind)
-    #df_imp = pd.DataFrame(imp,ind)
-    #df_imp.to_csv(os.path.join(cn.cleaned,'importances.csv'))
-    print('Top 20 achievements for ', group)
-    names = []
-    ids = []
-    for i, v in enumerate(df_tree.columns.values[indices]):
-        print(i,v)
-        names.append (dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0])
-        ids.append (v)
-    return ids, names
-
-
-
-def feature_permutation (df_tree, group):
-    print("Making training and test sets....")
-    rs = ShuffleSplit(n_splits=10, test_size=.25, random_state=17)
-
-    for train_index, test_index in rs.split(df_tree):
-        train_set = df_tree.iloc[train_index].copy()
-        test_set = df_tree.iloc[test_index].copy()
-        #print(train_set.head())
-
-    y_train = train_set.engagement
-    X_train = train_set.drop('engagement',axis = 1)
-    y_test = test_set.engagement
-    X_test = test_set.drop('engagement',axis = 1)
-    encoder = preprocessing.LabelEncoder() # get a type error if not encoded
-    y_train = encoder.fit_transform(y_train)
-    y_test = encoder.fit_transform(y_test)
-
-
-
-    print("Start random forest...")
-    selected = RandomForestClassifier(n_estimators = 200,n_jobs = -1,
-                           oob_score = True,bootstrap = True,random_state = 17)
-    fitted = selected.fit(X_train, y_train)
-    oob_classifier_accuracy = rfpimp.oob_classifier_accuracy(fitted, X_train, y_train)
-    imp = rfpimp.permutation_importances(fitted, X_train, y_train,
-        oob_classifier_accuracy)
-    print(imp)
-    return(imp)
-
-
-    #print("Important Features...")
-    #os.chdir(os.path.join(config.clean_dir))
-    #dfa = pd.read_csv('achievement_details_list.csv')
-    #importances = selected.feature_importances_
-    #indices = np.argsort(importances)
-
-    #print('Top 20 achievements for ', group)
-    #top = []
-    #for i, v in enumerate(df_tree.columns.values[indices][3900:4000]):
-    #    name = dfa[dfa.achievement_id.astype(int).astype(str) == v].achievement_name.values[0]
-    #    top.append(name)
-    #return top
+def create_table (cursor, table_name):
+    """Iterate through the existing tables and check to see if the desired table already exists
+    If not, it creates the database """
+    table_description = table_name
+    try:
+        print("Creating table {}: ".format(table_name), end='')
+        cursor.execute(table_description)
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+            print("already exists.")
+        else:
+            print(err.msg)
+    else:
+        print("OK")

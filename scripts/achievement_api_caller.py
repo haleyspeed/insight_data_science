@@ -1,12 +1,12 @@
-import config
-import custom_funcs as cf
+import subscript.config as cn
+import subscript.custom_funcs as cf
 import pandas as pd
 import os
 import numpy as np
 import configparser as cp
 import datetime
 
-f_config = os.path.join(config.home_dir, '../', 'api', 'config.ini')
+f_config = os.path.join(cn.home_dir, '../', 'api', 'config.ini')
 conf = cp.ConfigParser()
 conf.read(f_config)
 blizzard_key = conf.get('KEYS', 'blizzard')
@@ -18,18 +18,18 @@ access_token = cf.get_access_token(blizzard_key, blizzard_secret)
 
 print('starting up...')
 final_cols = ['id','player', 'realm']
-achievement_list = pd.read_csv(os.path.join(config.raw_dir,'wow_achievements.csv'))
+achievement_list = pd.read_csv(os.path.join(cn.raw_dir,'wow_achievements.csv'))
 achievement_list.columns = ['unnamed0', 'unnamed1', 'player', 'guild', 'realm', 'id']
 achievement_list = achievement_list.drop(['unnamed0', 'unnamed1'], axis = 1)
 #print(achievement_list.columns)
 for id in achievement_list.id:
     final_cols.append(str(int(id)))
 empty_row = dict.fromkeys(final_cols)
-i = 25401
-for group_num in np.arange(100, 2000, 100):
+i = 0
+for group_num in np.arange(200, 300, 100):
     print('Group Number: ' + str(group_num))
     f = 'wow_roster' + str(group_num) + '.csv'
-    player_roster = pd.read_csv(os.path.join(config.raw_dir,'wow_rosters', f))
+    player_roster = pd.read_csv(os.path.join(cn.raw_dir,'wow_rosters', f))
     df = pd.DataFrame()
     for m in player_roster.itertuples():
         if m.level == 120:
@@ -52,7 +52,7 @@ for group_num in np.arange(100, 2000, 100):
                 df = df.append(row, ignore_index=True)
         if i % 100 == 0:
             f_name = f.split('roster')[0] + '6-8_dates_' + str(group_num) + '_' + str(i) + '.csv'
-            df.to_csv(os.path.join(config.processed_dir,'6-8_scrapes', f_name))
+            df.to_csv(os.path.join(cn.processed_dir,'6-8_scrapes', f_name))
             df = pd.DataFrame()
             print(f_name + ' saved')
         i = i + 1

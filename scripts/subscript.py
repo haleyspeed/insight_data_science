@@ -7,12 +7,64 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random as rn
 import time
+import configparser
 
 
+# Connection details for the SQL database
+config = configparser.ConfigParser()
+config.read('../config.ini')
+DB_NAME = config.get('connections', 'db_name')
+USER_NAME = config.get('connections', 'db_user')
+PWD = config.get('connections', 'db_pwd')
+HOST_NAME = config.get('connections','db_host')
+PORT = config.get('connections', 'db_port')
 
-def get_data():
+
+def connect():
+    """ Establishes connection to the mySQL database """
+    cnx = mysql.connector.connect(user = USER_NAME,
+    password = PWD, host = HOST_NAME, database = DB_NAME,
+    port = PORT)
+    cursor = cnx.cursor(buffered = True)
+    locate_database(cursor, DB_NAME)
+    return cnx, cursor
+
+
+def get_data_sql(realm):
+    """ Filters at-risk players by realm"""
+    cnx, cursor = connect()
+    sql = "SELECT * FROM final_time_stats WHERE realm = realm AND status = 'risk'"
+    cursor.execute(sql)
+    search = cursor.fetchall()
+    df_search = pd.DataFrame(columns = raw_fields)
+    for item in search:
+        tmp = pd.DataFrame(item)
+        tmp = tmp.T
+        tmp.columns = raw_fields
+        tmp.time_since_login = tmp.time_since_login.str.split('days')[0][0]
+        df_search = df_search.append(tmp, ignore_index = True)
+    return df_search
+
+
+def get_data_sql():
+    """ Gets all at-risk players in the entire database"""
+    cnx, cursor = connect()
+    sql = "SELECT * FROM final_time_stats WHERE status = 'risk'"
+    cursor.execute(sql)
+    search = cursor.fetchall()
+    df_search = pd.DataFrame(columns = raw_fields)
+    for item in search:
+        tmp = pd.DataFrame(item)
+        tmp = tmp.T
+        tmp.columns = raw_fields
+        tmp.time_since_login = tmp.time_since_login.str.split('days')[0][0]
+        df_search = df_search.append(tmp, ignore_index = True)
+    return df_search
+
+
+def get_data_csv():
     """ Loads in pre-processed data for fast loading """
-    df = pd.read_csv(os.path.join(cn.clean_dir, 'random_forest_classifier',
+    df = pd.read_csv(os.path.join(cn.clean_dir, 'random_forest_time',
             'test_predictions.csv'), dtype = 'unicode')
     df['id'] = df.player + '_' + df.realm
     df = df.set_index('id')
@@ -22,7 +74,7 @@ def get_data():
     return df, df_rec
 
 
-def get_recommendations (df_feat):
+def get_recommendations_csv (df_feat):
     """ Uses a random number generator to select 5 of the most popular features
     from the achievement list csv"""
     features = list()
@@ -32,6 +84,28 @@ def get_recommendations (df_feat):
                 df_rec.iloc[n]['description']]
         features.append(rec)
     return features[:5]
+
+
+def get_categories_sql ():
+    cnx, cursor = connect()
+    sql = "SELECT category FROM features"
+    cursor.execute(sql)
+    search = cursor.fetchall()
+    return search
+
+
+def get_recommendations_sql (category):
+    cnx, cursor = connect()
+    sql = "SELECT * FROM features WHERE category = category"
+    cursor.execute(sql)
+    search = cursor.fetchall()
+    df_search = pd.DataFrame(columns = fields)
+    for item in search:
+        tmp = pd.DataFrame(item)
+        tmp = tmp.T
+        tmp.columns = fields
+        df_search = df_search.append(tmp, ignore_index = True)
+    return df_search
 
 
 def update_plot(fig, ax, df_results):
@@ -64,8 +138,10 @@ def update_plot(fig, ax, df_results):
     main_bottom.pyplot()
     return retained
 #@st.cache
+
+
 # Set default variables
-df, df_rec = get_data()
+df, df_rec = get_data_csv()
 get_recs = False
 sub_cost = 15
 df_results = pd.DataFrame(columns = df.columns.values)
@@ -77,11 +153,21 @@ features = ['player', 'realm','gear_score','last_login','status']
 df_results = df[df.engagement == '1.0'].drop_duplicates()
 main_top = st.image('subscript_full.jpg')
 
+
 #st.title('SubScript')
 st.subheader('Boosting subscription volume with targeted content')
 st.markdown('\n')
 fig, ax = plt.subplots()
 main_bottom = st.empty()
+
+
+# Setup sidebar at start
+side1 = st.sidebar.empty()
+side2 = st.sidebar.empty()
+side3 = st.sidebar.empty()
+side4 = st.sidebar.empty()
+side5 = st.sidebar.empty()
+
 
 # Action to get At-Risk Players
 st.sidebar.markdown(' ')
@@ -90,18 +176,14 @@ start = st.sidebar.button('Get At-Risk Players')
 if start:
     main_top.image('subscript.jpg')
     main_bottom.table(df_results[features])
+    side1.sidebar.select_box('Filter by server', )
 
-# Setup sidebar at start
-side1 = st.sidebar.empty()
-side2 = st.sidebar.empty()
-side3 = st.sidebar.empty()
-side4 = st.sidebar.empty()
 
 # Action for Get Recommendations button
 st.sidebar.markdown(' ')
 recs = get_recommendations(df_rec)
-rec_list = side1.subheader('Content Recommendations')
-rec_list = side2.button('Get Curated Recommendations')
+rec_list = side2.subheader('Content Recommendations')
+rec_list = side3.button('Get Curated Recommendations')
 if rec_list:
     main_top.empty()
     main_top.image('subscript.jpg')
@@ -119,8 +201,8 @@ if rec_list:
 
 # Action for "Calculate ROI"
 st.write ('\n')
-side3.subheader('Estimated Return on Investment')
-calc = side4.button('Calculate ROI')
+side4.subheader('Estimated Return on Investment')
+calc = side5.button('Calculate ROI')
 if calc:
     main_top.empty()
     main_bottom.empty()

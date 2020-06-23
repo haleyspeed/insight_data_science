@@ -2,11 +2,14 @@
 # Created by https://www.gitignore.io/api/linux,macos,python
 # Edit at https://www.gitignore.io/?templates=linux,macos,python
 
-# ipynb-checkpoints
+# Jupyter Notebook Checkpoints
 *.ipynb_checkpoints
 
 # configs
 *.ini
+
+# YML
+*.yml
 
 # pickles
 *.sav

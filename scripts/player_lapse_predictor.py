@@ -1,7 +1,6 @@
-import config as cn
+import subscript.config as cn
 import pandas as pd
 import numpy as np
-import custom_funcs as cf
 import os
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
@@ -13,9 +12,11 @@ import joblib
 import matplotlib.pyplot as plt
 
 print('Reading in File...')
-df = pd.read_csv(os.path.join(cn.clean_dir, 'random_forest_classifier','whole_test_set.csv'))
+df = pd.read_csv(os.path.join(cn.clean_dir, 'random_forest_time',
+        'whole_test_set.csv'))
 dfo = df.copy()
-model = joblib.load(os.path.join(cn.clean_dir,'pickles', 'final_time_model.sav'))
+model = joblib.load(os.path.join(cn.clean_dir,'random_forest_time',
+        'final_time_model.sav'))
 features = ['player', 'realm','last_login', 'time_since_login',
            'engagement', 'status']
 
@@ -39,5 +40,5 @@ for i in np.arange(1,6):
     df['2020-05'] = df['2020-05'].values.astype(float) + 1
     new_pred = model.predict(df.drop(features, axis = 1))
     dfo['pred' + str(i)] = new_pred
-dfo.to_csv(os.path.join(cn.clean_dir, 'random_forest_classifier',
+dfo.to_csv(os.path.join(cn.clean_dir, 'random_forest_time',
         'test_predictions.csv'), index = False)

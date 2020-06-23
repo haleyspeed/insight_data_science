@@ -1,0 +1,300 @@
+,Unnamed: 0,account_wide,achievement_id,achievement_name,category_id,category_name,criteria_id,criteria_name,description,next_id,next_name,include
+2952,2952,0.0,9712.0,Shiny Pet Charmer,15117.0,Pet Battles,40593.0,,Earn 500 Shiny Pet Charms.,,,1
+3700,3700,0.0,12270.0,Bringing Hexy Back,15285.0,Battle Dungeon,62876.0,,Defeat all four bosses with at least one party member under the affects of Unstable Hex in Atal'Dazar on Mythic difficulty.,,,1
+3701,3701,0.0,12272.0,Gold Fever,15285.0,Battle Dungeon,62892.0,,Defeat Priestess Alun'za after defeating the Fatal Corruption in Atal'Dazar on Mythic difficulty.,,,1
+3702,3702,0.0,12273.0,It's Lit!,15285.0,Battle Dungeon,62897.0,,Defeat Yazma while all four Shadowflame Sconces are lit in Atal'Dazar on Mythic difficulty.,,,1
+3784,3784,0.0,12457.0,Remix to Ignition,15285.0,Battle Dungeon,65318.0,,Defeat Knight Captain Valyri without detonating any Munitions in Tol Dagor on Mythic difficulty.,,,1
+3785,3785,0.0,12462.0,Shot Through the Heart,15285.0,Battle Dungeon,65336.0,,Defeat Overseer Korgus after all party members have been stunned by Heartstopper Venom at the same time in Tol Dagor on Mythic difficulty.,,,1
+3792,3792,0.0,12483.0,Waycrest Manor,15285.0,Battle Dungeon,65978.0,,Defeat Gorak Tul in Waycrest Manor.,12484.0,Heroic: Waycrest Manor,1
+3793,3793,0.0,12484.0,Heroic: Waycrest Manor,15285.0,Battle Dungeon,65980.0,,Defeat Gorak Tul in Waycrest Manor on Heroic difficulty or higher.,13000.0,Mythic: Waycrest Manor Guild Run,1
+3794,3794,0.0,12488.0,Mythic: Waycrest Manor,15285.0,Battle Dungeon,65982.0,,Defeat Gorak Tul in Waycrest Manor on Mythic difficulty.,,,1
+3795,3795,0.0,12489.0,Losing My Profession,15285.0,Battle Dungeon,65984.0,,Find and kill all of the enemies in Waycrest Manor and Siege of Boralus listed below on Mythic difficulty.,,,1
+3796,3796,0.0,12490.0,Alchemical Romance,15285.0,Battle Dungeon,65990.0,,"Destroy three Deathtouched Slavers's corpses using a single Alchemical Fire, then defeat Gorak Tul in Waycrest Manor on Mythic difficulty.",,,1
+3797,3797,0.0,12495.0,Run Wild Like a Man On Fire,15285.0,Battle Dungeon,66012.0,,Defeat the Soulbound Goliath without it gaining 12 stacks of Soul Harvest in Waycrest Manor on Mythic difficulty.,,,1
+3800,3800,0.0,12498.0,Taint Nobody Got Time For That,15285.0,Battle Dungeon,66081.0,,Defeat Elder Leaxa without any party member receiving the Taint of G'huun in Underrot on Mythic difficulty.,,,1
+3801,3801,0.0,12499.0,Sporely Alive,15285.0,Battle Dungeon,66089.0,,Defeat the Unbound Abomination without any Rotting Spores dying in Underrot on Mythic difficulty.,,,1
+3802,3802,0.0,12500.0,Underrot,15285.0,Battle Dungeon,66091.0,,Defeat the Unbound Abomination in Underrot.,12501.0,Heroic: Underrot,1
+3803,3803,0.0,12501.0,Heroic: Underrot,15285.0,Battle Dungeon,66093.0,,Defeat the Unbound Abomination in Underrot on Heroic difficulty or higher.,13003.0,Mythic: Underrot Guild Run,1
+3804,3804,0.0,12502.0,Mythic: Underrot,15285.0,Battle Dungeon,66095.0,,Defeat the Unbound Abomination in Underrot on Mythic difficulty.,,,1
+3805,3805,0.0,12503.0,Snake Eyes,15285.0,Battle Dungeon,66104.0,,Activate both of the eyes to exit the Bazaar in the Temple of Sethraliss within 10 seconds on Mythic difficulty.,,,1
+3806,3806,0.0,12504.0,The Temple of Sethraliss,15285.0,Battle Dungeon,66106.0,,Restore the Avatar of Sethraliss in the Temple of Sethraliss.,12505.0,Heroic: The Temple of Sethraliss,1
+3807,3807,0.0,12505.0,Heroic: The Temple of Sethraliss,15285.0,Battle Dungeon,66108.0,,Restore the Avatar of Sethraliss in the Temple of Sethraliss on Heroic difficulty or higher.,13004.0,Mythic: The Temple of Sethraliss Guild Run,1
+3808,3808,0.0,12506.0,Mythic: The Temple of Sethraliss,15285.0,Battle Dungeon,66110.0,,Restore the Avatar of Sethraliss in the Temple of Sethraliss on Mythic difficulty.,,,1
+3809,3809,0.0,12507.0,Snake Eater,15285.0,Battle Dungeon,66112.0,,"Force the Solid Egg to hatch during the Merektha encounter, defeat the Solid Snake, and become the Snake Eater in the Temple of Sethraliss on Mythic difficulty.",,,1
+3810,3810,0.0,12508.0,"Good Night, Sweet Prince",15285.0,Battle Dungeon,66114.0,,Restore the Avatar of Sethraliss with the Prince active in the Temple of Sethraliss on Mythic difficulty.,,,1
+3813,3813,0.0,12521.0,Halls of Containment,15286.0,Battle Raid,66224.0,,Defeat the following bosses in the first section of Uldir.,,,1
+3814,3814,0.0,12522.0,Crimson Descent,15286.0,Battle Raid,66228.0,,Defeat the following bosses in the depths of Uldir.,,,1
+3815,3815,0.0,12523.0,Heart of Corruption,15286.0,Battle Raid,66232.0,,Defeat the following bosses and extinguish the corruption in the lowest reaches of Uldir.,,,1
+3816,3816,0.0,12524.0,Mythic: Taloc,15286.0,Battle Raid,66235.0,,Defeat Taloc in Uldir on Mythic difficulty.,,,1
+3817,3817,0.0,12526.0,Mythic: MOTHER,15286.0,Battle Raid,66238.0,,Defeat MOTHER in Uldir on Mythic difficulty.,,,1
+3818,3818,0.0,12527.0,Mythic: Zek'voz,15286.0,Battle Raid,66241.0,,Defeat Zek'voz in Uldir on Mythic difficulty.,,,1
+3819,3819,0.0,12529.0,Mythic: Vectis,15286.0,Battle Raid,66243.0,,Defeat Vectis in Uldir on Mythic difficulty.,,,1
+3820,3820,0.0,12530.0,Mythic: Fetid Devourer,15286.0,Battle Raid,66250.0,,Defeat the Fetid Devourer in Uldir on Mythic difficulty.,,,1
+3821,3821,0.0,12531.0,Mythic: Zul,15286.0,Battle Raid,66252.0,,Defeat Zul in Uldir on Mythic difficulty.,,,1
+3822,3822,0.0,12532.0,Mythic: Mythrax the Unraveler,15286.0,Battle Raid,66255.0,,Defeat Mythrax the Unraveler in Uldir on Mythic difficulty.,,,1
+3823,3823,0.0,12533.0,Mythic: G'huun,15286.0,Battle Raid,66257.0,,Defeat G'huun in Uldir on Mythic difficulty.,,,1
+3826,3826,0.0,12537.0,Uldir Guild Run,15300.0,Battle Raid,66263.0,,"Defeat the bosses of Uldir on Normal difficulty or higher, while in a guild group.",,,1
+3832,3832,0.0,12548.0,I'm in Charge Now!,15285.0,Battle Dungeon,66547.0,,Defeat Skycap'n Kragg after summoning and defeating Patches in Freehold on Mythic difficulty.,,,1
+3833,3833,0.0,12549.0,Not a Fun Guy,15285.0,Battle Dungeon,66684.0,,"Defeat Musashitake, then defeat Sporecaller Zancha in Underrot on Mythic difficulty.",,,1
+3834,3834,0.0,12550.0,Pecking Order,15285.0,Battle Dungeon,66692.0,,Serve Sharkbait his favorite meal in Freehold on Mythic difficulty.,,,1
+3835,3835,0.0,12551.0,Double Dribble,15286.0,Battle Raid,66711.0,,Defeat G'huun in Uldir after having no player move while holding a Power Matrix on Normal difficulty or higher.,,,1
+3855,3855,0.0,12587.0,Unbound Monstrosities,15286.0,Battle Raid,66830.0,,Defeat the following monstrous creatures on Kul Tiras and Zandalar.,,,1
+3857,3857,0.0,12589.0,Heroic: Un'gol Ruins,15307.0,Island Expeditions,69278.0,,Achieve victory in an expedition to Un'gol Ruins on Heroic difficulty or higher.,12591.0,Mythic: Un'gol Ruins,1
+3858,3858,0.0,12590.0,Un'gol Ruins,15307.0,Island Expeditions,69226.0,,Achieve victory in an expedition to Un'gol Ruins on any difficulty.,12589.0,Heroic: Un'gol Ruins,1
+3859,3859,0.0,12591.0,Mythic: Un'gol Ruins,15307.0,Island Expeditions,69276.0,,Achieve victory in an expedition to Un'gol Ruins on Mythic difficulty.,,,1
+3860,3860,0.0,12592.0,Ruined the Ruins,15307.0,Island Expeditions,69274.0,,Achieve victory in an expedition to Un'gol Ruins in PvP.,,,1
+3861,3861,0.0,12594.0,Competent Captain,15307.0,Island Expeditions,66895.0,,Win 20 Island Expeditions on Heroic difficulty or higher.,12595.0,Expert Expeditioner,1
+3862,3862,0.0,12595.0,Expert Expeditioner,15307.0,Island Expeditions,66897.0,,Win 50 Island Expeditions on Mythic difficulty.,,,1
+3863,3863,0.0,12596.0,No Tourist,15307.0,Island Expeditions,66899.0,,Win 10 Island Expeditions on Normal difficulty or higher.,12594.0,Competent Captain,1
+3864,3864,0.0,12597.0,Bayside Brawler,15307.0,Island Expeditions,66901.0,,Win 10 Island Expeditions in PvP.,13120.0,Blood in the Water,1
+3865,3865,0.0,12600.0,Breath of the Shrine,15285.0,Battle Dungeon,67050.0,,Light the ceremonial fires within the temple using the Shrine's Breath in Shrine of the Storm on Mythic difficulty.,,,1
+3866,3866,0.0,12601.0,The Void Lies Sleeping,15285.0,Battle Dungeon,67052.0,,Defeat Lord Stormsong without coming into contact with any Awoken Void in Shrine of the Storm on Mythic difficulty.,,,1
+3867,3867,0.0,12602.0,Trust No One,15285.0,Battle Dungeon,67056.0,,Defeat Vol'zith the Whisperer while all party members are afflicted with Maddening Dreams in Shrine of the Storm on Mythic difficulty.,,,1
+3870,3870,0.0,12721.0,Wrap God,15285.0,Battle Dungeon,68636.0,,Defeat Mchimba the Embalmer without him finishing a cast of Open Coffin and with entombed players using Struggle no more than once per cast of Entomb on Mythic Difficulty.,,,1
+3871,3871,0.0,12722.0,It Belongs in a Mausoleum!,15285.0,Battle Dungeon,68417.0,,Find four ancient trinkets in Kings' Rest on Mythic difficulty.,,,1
+3872,3872,0.0,12723.0,How to Keep a Mummy,15285.0,Battle Dungeon,69673.0,,Free Miimii the Mummy in Kings' Rest on Mythic difficulty.,,,1
+3873,3873,0.0,12726.0,A Fish Out of Water,15285.0,Battle Dungeon,67345.0,,Kick fifteen Gasping Flounders back into the water then defeat Viq'Goth in the Siege of Boralus on Mythic difficulty.,,,1
+3874,3874,0.0,12727.0,Stand by Me,15285.0,Battle Dungeon,67347.0,,Never let Dread Captain Lockwood leap away while she has the evasive aura before defeating her in the Siege of Boralus on Mythic difficulty.,,,1
+3903,3903,0.0,12772.0,Now We Got Bad Blood,15286.0,Battle Raid,67658.0,,Defeat Vectis in Uldir after infecting Warmother Rakkali with Plague Bomb then defeating her on Normal difficulty or higher.,,,1
+3904,3904,0.0,12823.0,Thrash Mouth - All Stars,15286.0,Battle Raid,67763.0,,Defeat the Fetid Devourer in Uldir after having all players hit by Terrible Thrash at least once on Normal difficulty or higher.,,,1
+3905,3905,0.0,12824.0,Atal'Dazar,15285.0,Battle Dungeon,67765.0,,Defeat Yazma in Atal'Dazar,12825.0,Heroic: Atal'Dazar,1
+3906,3906,0.0,12825.0,Heroic: Atal'Dazar,15285.0,Battle Dungeon,67767.0,,Defeat Yazma in Atal'Dazar on Heroic difficulty or higher.,13002.0,Mythic: Atal'Dazar Guild Run,1
+3907,3907,0.0,12826.0,Mythic: Atal'Dazar,15285.0,Battle Dungeon,67769.0,,Defeat Yazma in Atal'Dazar on Mythic difficulty.,,,1
+3909,3909,0.0,12828.0,What's in the Box?,15286.0,Battle Raid,67863.0,,Defeat Zek'voz in Uldir after exposing the Puzzle Box of Yogg-Saron to the Projection of Yogg-Saron on Normal difficulty or higher.,,,1
+3910,3910,0.0,12830.0,Edgelords,15286.0,Battle Raid,67811.0,,"Defeat Zul, Reborn in Uldir without any player stepping onto the inner ring of the Oblivion Door on Normal difficulty or higher.",,,1
+3911,3911,0.0,12831.0,Freehold,15285.0,Battle Dungeon,67817.0,,Defeat Harlan Sweete in Freehold.,12832.0,Heroic: Freehold,1
+3912,3912,0.0,12832.0,Heroic: Freehold,15285.0,Battle Dungeon,67819.0,,Defeat Harlan Sweete in Freehold on Heroic difficulty or higher.,12999.0,Mythic: Freehold Guild Run,1
+3913,3913,0.0,12833.0,Mythic: Freehold,15285.0,Battle Dungeon,67821.0,,Defeat Harlan Sweete in Freehold on Mythic difficulty.,,,1
+3914,3914,0.0,12835.0,Shrine of the Storm,15285.0,Battle Dungeon,67823.0,,Defeat Vol'zith the Whisperer in Shrine of the Storm.,12837.0,Heroic: Shrine of the Storm,1
+3915,3915,0.0,12836.0,Existential Crisis,15286.0,Battle Raid,67831.0,,Defeat Mythrax the Unraveler in Uldir with no player touching an Existence Fragment spawned by another player on Normal difficulty or higher.,,,1
+3916,3916,0.0,12837.0,Heroic: Shrine of the Storm,15285.0,Battle Dungeon,67825.0,,Defeat Vol'zith the Whisperer in Shrine of the Storm on Heroic difficulty or higher.,13001.0,Mythic: Shrine of the Storm Guild Run,1
+3917,3917,0.0,12838.0,Mythic: Shrine of the Storm,15285.0,Battle Dungeon,67827.0,,Defeat Vol'zith the Whisperer in Shrine of the Storm on Mythic difficulty.,,,1
+3918,3918,0.0,12840.0,Tol Dagor,15285.0,Battle Dungeon,67829.0,,Defeat Overseer Korgus in Tol Dagor.,12841.0,Heroic: Tol Dagor,1
+3919,3919,0.0,12841.0,Heroic: Tol Dagor,15285.0,Battle Dungeon,67833.0,,Defeat Overseer Korgus in Tol Dagor on Heroic difficulty or higher.,13005.0,Mythic: Tol Dagor Guild Run,1
+3920,3920,0.0,12842.0,Mythic: Tol Dagor,15285.0,Battle Dungeon,67835.0,,Defeat Overseer Korgus in Tol Dagor on Mythic difficulty.,,,1
+3921,3921,0.0,12844.0,The MOTHERLODE!!,15285.0,Battle Dungeon,67853.0,,Defeat Mogul Razdunk in The MOTHERLODE!!,12845.0,Heroic: The MOTHERLODE!!,1
+3922,3922,0.0,12845.0,Heroic: The MOTHERLODE!!,15285.0,Battle Dungeon,67855.0,,Defeat Mogul Razdunk in The MOTHERLODE!! on Heroic difficulty or higher.,13006.0,Mythic: The MOTHERLODE!! Guild Run,1
+3923,3923,0.0,12846.0,Mythic: The MOTHERLODE!!,15285.0,Battle Dungeon,67857.0,,Defeat Mogul Razdunk in The MOTHERLODE!! on Mythic difficulty.,,,1
+3924,3924,0.0,12847.0,Siege of Boralus,15285.0,Battle Dungeon,67861.0,,Defeat Viq'goth in Siege of Boralus on Mythic difficulty.,,,1
+3925,3925,0.0,12848.0,Kings' Rest,15285.0,Battle Dungeon,67864.0,,Defeat Dazar in Kings' Rest on Mythic difficulty.,,,1
+3931,3931,0.0,12854.0,Ready for Raiding VI,15285.0,Battle Dungeon,69671.0,,"Defeat Mogul Razdunk without being struck by Gatling Gun, Micro Missiles, Big Red Rocket, or a direct hit from Drill Smash in The MOTHERLODE!! on Mythic difficulty.",,,1
+3932,3932,0.0,12855.0,Pitch Invasion,15285.0,Battle Dungeon,68023.0,,Defeat the Coin-Operated Crowd Pummeler after defeating Ledley the Bold in The MOTHERLODE!! on Mythic difficulty.,,,1
+3940,3940,0.0,12867.0,Azeroth at War: The Barrens,15308.0,War Effort,68067.0,,Complete the following missions listed below:,,,1
+3941,3941,0.0,12869.0,Azeroth at War: After Lordaeron,15308.0,War Effort,68221.0,,Complete the following missions listed below:,,,1
+3942,3942,0.0,12870.0,Azeroth at War: Kalimdor on Fire,15308.0,War Effort,68082.0,,Complete the following missions listed below:,,,1
+3943,3943,0.0,12872.0,The Dirty Five,15308.0,War Effort,68084.0,,Raise 5 War Campaign Champions to Epic Level.,,,1
+3944,3944,0.0,12873.0,War is Hell,15308.0,War Effort,68085.0,,Complete the Battle for Stromgarde.,,,1
+3945,3945,0.0,12874.0,An Eventful Battle,15308.0,War Effort,68088.0,,Complete the following random events in the Battle for Stromgarde:,,,1
+3946,3946,0.0,12876.0,Strike Fast,15308.0,War Effort,68092.0,,Capture every location in the Battle for Stromgarde.,,,1
+3947,3947,0.0,12877.0,Strike Hard,15308.0,War Effort,68093.0,,Capture a location in the Battle for Stromgarde.,12876.0,Strike Fast,1
+3948,3948,0.0,12878.0,Leader of Troops,15308.0,War Effort,68094.0,,Recruit one of every troop type in the Battle for Stromgarde.,,,1
+3949,3949,0.0,12879.0,Tour of War,15308.0,War Effort,68095.0,,Defeat the following enemy commanders in the Battle for Stromgarde:,,,1
+3950,3950,0.0,12881.0,War is Hell,15308.0,War Effort,68089.0,,Complete the Battle for Stromgarde.,,,1
+3951,3951,0.0,12884.0,Leader of Troops,15308.0,War Effort,68116.0,,Recruit one of every troop type in the Battle for Stromgarde.,,,1
+3952,3952,0.0,12886.0,Tour of War,15308.0,War Effort,68142.0,,Defeat the following enemy commanders in the Battle for Stromgarde:,,,1
+3953,3953,0.0,12888.0,Strike Hard,15308.0,War Effort,68162.0,,Capture a location in the Battle for Stromgarde.,12889.0,Strike Fast,1
+3954,3954,0.0,12889.0,Strike Fast,15308.0,War Effort,68170.0,,Capture every location in the Battle for Stromgarde.,,,1
+3956,3956,0.0,12896.0,Azeroth at War: The Barrens,15308.0,War Effort,68081.0,,Complete the following missions listed below:,,,1
+3957,3957,0.0,12898.0,Azeroth at War: After Lordaeron,15308.0,War Effort,68235.0,,Complete the following missions listed below:,,,1
+3958,3958,0.0,12899.0,Azeroth at War: Kalimdor on Fire,15308.0,War Effort,68249.0,,Complete the following missions listed below:,,,1
+3959,3959,0.0,12918.0,Have a Heart,15417.0,Heart of Azeroth,68313.0,,Obtain the Heart of Azeroth.,,,1
+3960,3960,0.0,12927.0,Polished Pet Charmer,15117.0,Pet Battles,68333.0,,Earn 500 Polished Pet Charms.,,,1
+3961,3961,0.0,12937.0,Elevator Music,15286.0,Battle Raid,68995.0,,Defeat Taloc in Uldir after activating all Orbs of Harmony on Normal Difficulty or higher.,,,1
+3962,3962,0.0,12938.0,Parental Controls,15286.0,Battle Raid,70707.0,,Defeat MOTHER in Uldir after entering her secret passcode on Normal difficulty or higher.,,,1
+3988,3988,0.0,12998.0,That Sweete Booty,15285.0,Battle Dungeon,70748.0,,Defeat Harlan Sweete after destroying three Chests o' Booty in Freehold on Mythic Difficulty.,,,1
+3989,3989,0.0,12999.0,Mythic: Freehold Guild Run,15299.0,Battle Dungeon,68528.0,,Defeat Harlan Sweete in Freehold on Mythic difficulty while in a guild group.,,,1
+3990,3990,0.0,13000.0,Mythic: Waycrest Manor Guild Run,15299.0,Battle Dungeon,68530.0,,Defeat Gorak Tul in Waycrest Manor on Mythic difficulty while in a guild group.,,,1
+3991,3991,0.0,13001.0,Mythic: Shrine of the Storm Guild Run,15299.0,Battle Dungeon,68532.0,,Defeat Vol'zith the Whisperer in Shrine of the Storm on Mythic difficulty while in a guild group.,,,1
+3992,3992,0.0,13002.0,Mythic: Atal'Dazar Guild Run,15299.0,Battle Dungeon,68534.0,,Defeat Yazma in Atal'Dazar on Mythic difficulty while in a guild group.,,,1
+3993,3993,0.0,13003.0,Mythic: Underrot Guild Run,15299.0,Battle Dungeon,68536.0,,Defeat the Unbound Abomination in Underrot on Mythic difficulty while in a guild group.,,,1
+3994,3994,0.0,13004.0,Mythic: The Temple of Sethraliss Guild Run,15299.0,Battle Dungeon,68538.0,,Restore the Avatar of Sethraliss in the Temple of Sethraliss on Mythic difficulty while in a guild group.,,,1
+3995,3995,0.0,13005.0,Mythic: Tol Dagor Guild Run,15299.0,Battle Dungeon,68540.0,,Defeat Overseer Korgus in Tol Dagor on Mythic difficulty while in a guild group.,,,1
+3996,3996,0.0,13006.0,Mythic: The MOTHERLODE!! Guild Run,15299.0,Battle Dungeon,68542.0,,Defeat Mogul Razdunk in The MOTHERLODE!! on Mythic difficulty while in a guild group.,,,1
+3997,3997,0.0,13007.0,Siege of Boralus Guild Run,15299.0,Battle Dungeon,68544.0,,Defeat Viq'goth in Siege of Boralus while in a guild group.,,,1
+3998,3998,0.0,13008.0,Kings' Rest Guild Run,15299.0,Battle Dungeon,68546.0,,Defeat Dazar in Kings' Rest while in a guild group.,,,1
+4000,4000,0.0,13010.0,Mythic: G'huun Guild Run,15300.0,Battle Raid,68554.0,,Defeat G'huun in Uldir on Mythic difficulty while in a guild group.,,,1
+4041,4041,0.0,13075.0,Battle for Azeroth Keymaster,15285.0,Battle Dungeon,68770.0,,Complete the following Battle for Azeroth dungeons using a Mythic Keystone:,,,1
+4050,4050,0.0,13095.0,Dread Chain,15307.0,Island Expeditions,69248.0,,Achieve victory in an expedition to Dread Chain on any difficulty.,13096.0,Heroic: Dread Chain,1
+4051,4051,0.0,13096.0,Heroic: Dread Chain,15307.0,Island Expeditions,69246.0,,Achieve victory in an expedition to Dread Chain on Heroic difficulty or higher.,13097.0,Mythic: Dread Chain,1
+4052,4052,0.0,13097.0,Mythic: Dread Chain,15307.0,Island Expeditions,69244.0,,Achieve victory in an expedition to Dread Chain on Mythic difficulty.,,,1
+4053,4053,0.0,13098.0,Bane of the Chain,15307.0,Island Expeditions,69242.0,,Achieve victory in an expedition to Dread Chain in PvP.,,,1
+4054,4054,0.0,13099.0,Molten Cay,15307.0,Island Expeditions,69224.0,,Achieve victory in an expedition to Molten Cay on any difficulty.,13100.0,Heroic: Molten Cay,1
+4055,4055,0.0,13100.0,Heroic: Molten Cay,15307.0,Island Expeditions,69228.0,,Achieve victory in an expedition to Molten Cay on Heroic difficulty or higher.,13101.0,Mythic: Molten Cay,1
+4056,4056,0.0,13101.0,Mythic: Molten Cay,15307.0,Island Expeditions,69230.0,,Achieve victory in an expedition to Molten Cay on Mythic difficulty.,,,1
+4057,4057,0.0,13102.0,Clash at the Cay,15307.0,Island Expeditions,69232.0,,Achieve victory in an expedition to Molten Cay in PvP.,,,1
+4058,4058,0.0,13103.0,Rotting Mire,15307.0,Island Expeditions,69256.0,,Achieve victory in an expedition to Rotting Mire on any difficulty.,13104.0,Heroic: Rotting Mire,1
+4059,4059,0.0,13104.0,Heroic: Rotting Mire,15307.0,Island Expeditions,69254.0,,Achieve victory in an expedition to Rotting Mire on Heroic difficulty or higher.,13105.0,Mythic: Rotting Mire,1
+4060,4060,0.0,13105.0,Mythic: Rotting Mire,15307.0,Island Expeditions,69252.0,,Achieve victory in an expedition to Rotting Mire on Mythic difficulty.,,,1
+4061,4061,0.0,13106.0,Mire Marauder,15307.0,Island Expeditions,69250.0,,Achieve victory in an expedition to Rotting Mire in PvP.,,,1
+4062,4062,0.0,13107.0,Skittering Hollow,15307.0,Island Expeditions,69240.0,,Achieve victory in an expedition to Skittering Hollow on any difficulty.,13108.0,Heroic: Skittering Hollow,1
+4063,4063,0.0,13108.0,Heroic: Skittering Hollow,15307.0,Island Expeditions,69238.0,,Achieve victory in an expedition to Skittering Hollow on Heroic difficulty or higher.,13109.0,Mythic: Skittering Hollow,1
+4064,4064,0.0,13109.0,Mythic: Skittering Hollow,15307.0,Island Expeditions,69236.0,,Achieve victory in an expedition to Skittering Hollow on Mythic difficulty.,,,1
+4065,4065,0.0,13110.0,Skittering Smashed,15307.0,Island Expeditions,69234.0,,Achieve victory in an expedition to Skittering Hollow in PvP.,,,1
+4066,4066,0.0,13111.0,Verdant Wilds,15307.0,Island Expeditions,69264.0,,Achieve victory in an expedition to Verdant Wilds on any difficulty.,13112.0,Heroic: Verdant Wilds,1
+4067,4067,0.0,13112.0,Heroic: Verdant Wilds,15307.0,Island Expeditions,69262.0,,Achieve victory in an expedition to Verdant Wilds on Heroic difficulty or higher.,13113.0,Mythic: Verdant Wilds,1
+4068,4068,0.0,13113.0,Mythic: Verdant Wilds,15307.0,Island Expeditions,69260.0,,Achieve victory in an expedition to Verdant Wilds on Mythic difficulty.,,,1
+4069,4069,0.0,13114.0,War for the Wilds,15307.0,Island Expeditions,69258.0,,Achieve victory in an expedition to Verdant Wilds in PvP.,,,1
+4070,4070,0.0,13115.0,Reef Madness,15307.0,Island Expeditions,69266.0,,Achieve victory in an expedition to Whispering Reef in PvP.,,,1
+4071,4071,0.0,13116.0,Mythic: Whispering Reef,15307.0,Island Expeditions,69268.0,,Achieve victory in an expedition to Whispering Reef on Mythic difficulty.,,,1
+4072,4072,0.0,13118.0,Heroic: Whispering Reef,15307.0,Island Expeditions,69270.0,,Achieve victory in an expedition to Whispering Reef on Heroic difficulty or higher.,13116.0,Mythic: Whispering Reef,1
+4073,4073,0.0,13119.0,Whispering Reef,15307.0,Island Expeditions,69272.0,,Achieve victory in an expedition to Whispering Reef on any difficulty.,13118.0,Heroic: Whispering Reef,1
+4074,4074,0.0,13120.0,Blood in the Water,15307.0,Island Expeditions,69280.0,,Win 20 Island Expeditions in PvP.,13121.0,Notorious,1
+4075,4075,0.0,13121.0,Notorious,15307.0,Island Expeditions,69282.0,,Win 50 Island Expeditions in PvP.,,,1
+4076,4076,0.0,13123.0,My Dubs,15307.0,Island Expeditions,69313.0,,Loot 10 Seafarer's Dubloons.,13124.0,Metal Detector,1
+4077,4077,0.0,13124.0,Metal Detector,15307.0,Island Expeditions,69315.0,,Loot 100 Seafarer's Dubloons.,,,1
+4078,4078,0.0,13126.0,Give Me The Energy,15307.0,Island Expeditions,69319.0,,Collect 30 globes of Azerite Energy on Island Expeditions.,,,1
+4079,4079,0.0,13129.0,Sucker Punch,15307.0,Island Expeditions,69377.0,,Kill a player that is affected by a Sticky Starfish on Island Expeditions.,,,1
+4080,4080,0.0,13133.0,Team Deathmatch,15307.0,Island Expeditions,69415.0,,Slay all of the Horde champions listed below.,,,1
+4081,4081,0.0,13135.0,Team Deathmatch,15307.0,Island Expeditions,69434.0,,Slay all of the Alliance champions listed below.,,,1
+4082,4082,0.0,13142.0,Archipelago Explorer,15307.0,Island Expeditions,69663.0,,Complete expeditions to five different islands.,,,1
+4103,4103,0.0,13286.0,Siege of Dazar'alor,15286.0,Battle Raid,72114.0,,Defeat the following bosses in the Battle of Dazar'alor.,,,1
+4104,4104,0.0,13287.0,Empire's Fall,15286.0,Battle Raid,72118.0,,Defeat the following bosses in the Battle of Dazar'alor.,,,1
+4105,4105,0.0,13288.0,Might of the Alliance,15286.0,Battle Raid,72122.0,,Witness the retelling of your allies' valiant efforts in the Battle of Dazar'alor.,,,1
+4106,4106,0.0,13289.0,Defense of Dazar'alor,15286.0,Battle Raid,72126.0,,Defeat the following bosses in the Battle of Dazar'alor.,,,1
+4107,4107,0.0,13290.0,Death's Bargain,15286.0,Battle Raid,72130.0,,Witness the retelling of your allies' heroic efforts in the Battle of Dazar'alor.,,,1
+4108,4108,0.0,13291.0,Victory or Death,15286.0,Battle Raid,72134.0,,Defeat the following bosses in the Battle of Dazar'alor.,,,1
+4109,4109,0.0,13292.0,Mythic: Champion of the Light,15286.0,Battle Raid,72138.0,,Defeat the Champion of the Light in Battle of Dazar'alor on Mythic difficulty.,,,1
+4110,4110,0.0,13293.0,Mythic: Grong,15286.0,Battle Raid,72140.0,,Defeat Grong in Battle of Dazar'alor on Mythic difficulty.,,,1
+4111,4111,0.0,13295.0,Mythic: Jadefire Masters,15286.0,Battle Raid,72154.0,,"Defeat Mestrah, the illuminated and Manceroy Flamefist in Battle of Dazar'alor on Mythic difficulty.",,,1
+4112,4112,0.0,13296.0,War for the Shore,15308.0,War Effort,72152.0,,Complete the Battle for Darkshore.,,,1
+4113,4113,0.0,13297.0,War for the Shore,15308.0,War Effort,72156.0,,Complete the Battle for Darkshore.,,,1
+4114,4114,0.0,13298.0,Mythic: Jadefire Masters,15286.0,Battle Raid,72158.0,,Defeat Ma'ra Grimfang and Anathos Firecaller in Battle of Dazar'alor on Mythic difficulty.,,,1
+4115,4115,0.0,13299.0,Mythic: Opulence,15286.0,Battle Raid,72160.0,,Defeat Opulence in Battle of Dazar'alor on Mythic difficulty.,,,1
+4116,4116,0.0,13300.0,Mythic: Conclave of the Chosen,15286.0,Battle Raid,72162.0,,Defeat Conclave of the Chosen in Battle of Dazar'alor on Mythic difficulty.,,,1
+4117,4117,0.0,13301.0,Under Cover of Darkness,15308.0,War Effort,72164.0,,Capture a location in the Battle for Darkshore.,13306.0,Night Moves,1
+4118,4118,0.0,13302.0,Under Cover of Darkness,15308.0,War Effort,72172.0,,Capture a location in the Battle for Darkshore.,13305.0,Night Moves,1
+4119,4119,0.0,13305.0,Night Moves,15308.0,War Effort,72180.0,,Capture every location in the Battle for Darkshore.,,,1
+4120,4120,0.0,13306.0,Night Moves,15308.0,War Effort,72188.0,,Capture every location in the Battle for Darkshore.,,,1
+4121,4121,0.0,13307.0,Recruitment Officer,15308.0,War Effort,72196.0,,Recruit one of every troop type in the Battle for Darkshore.,,,1
+4122,4122,0.0,13308.0,Recruitment Officer,15308.0,War Effort,72202.0,,Recruit one of every troop type in the Battle for Darkshore.,,,1
+4123,4123,0.0,13309.0,Deforester,15308.0,War Effort,72208.0,,Embody every Horde Hero in the Battle for Darkshore.,,,1
+4124,4124,0.0,13310.0,By Nature's Call,15308.0,War Effort,72212.0,,Embody every Alliance Hero in the Battle for Darkshore.,,,1
+4125,4125,0.0,13311.0,Mythic: King Rastakhan,15286.0,Battle Raid,72216.0,,Defeat King Rastakhan in Battle of Dazar'alor on Mythic difficulty.,,,1
+4126,4126,0.0,13312.0,Mythic: Mekkatorque,15286.0,Battle Raid,72218.0,,Defeat Gelbin Mekkatorque in Battle of Dazar'alor on Mythic difficulty.,,,1
+4127,4127,0.0,13313.0,Mythic: Stormwall Blockade,15286.0,Battle Raid,72220.0,,Defeat Stormwall Blockade in Battle of Dazar'alor on Mythic difficulty.,,,1
+4128,4128,0.0,13314.0,Mythic: Lady Jaina Proudmoore,15286.0,Battle Raid,72222.0,,Defeat Lady Jaina Proudmoore in Battle of Dazar'alor on Mythic difficulty.,,,1
+4129,4129,0.0,13316.0,Can I Get a Hek Hek Hek Yeah?,15286.0,Battle Raid,72226.0,,"Defeat the Champion of the Light in the Battle of Dazar'alor after stealing 3 shinies from each of the Crusaders, Disciples and Champion of the Light on Normal Difficulty or higher.",,,1
+4131,4131,0.0,13319.0,Battle of Dazar'alor Guild Run,15300.0,Battle Raid,72239.0,,"Defeat the bosses of Battle of Dazar'alor on Normal difficulty or higher, while in a guild group.",,,1
+4132,4132,0.0,13320.0,Battle of Dazar'alor Guild Run,15300.0,Battle Raid,72249.0,,"Defeat the bosses of Battle of Dazar'alor on Normal difficulty or higher, while in a guild group.",,,1
+4133,4133,0.0,13321.0,Mythic: Lady Jaina Proudmoore Guild Run,15300.0,Battle Raid,72479.0,,Defeat Lady Jaina Proudmoore in Battle of Dazar'alor on Mythic difficulty while in a guild group.,,,1
+4136,4136,0.0,13325.0,Walk the Dinosaur,15286.0,Battle Raid,72268.0,,Defeat the Conclave of the Chosen in the Battle of Dazar'alor without killing all the initial raptors summoned by Gonk's Wrath on Normal difficulty or higher.,,,1
+4143,4143,0.0,13345.0,Praise the Sunflower,15286.0,Battle Raid,78296.0,,Defeat the Opulence in Battle of Dazar'alor after /praising a Singing Sunflower while under the effects of Brilliant Aura on Normal Difficulty or higher.,,,1
+4144,4144,0.0,13383.0,Barrel of Monkeys,15286.0,Battle Raid,72383.0,,Defeat Grong in the Battle of Dazar'alor after destroying 6 Barrels on Normal Difficulty or higher.,,,1
+4148,4148,0.0,13389.0,Jorundall,15307.0,Island Expeditions,72418.0,,Achieve victory in an expedition to Jorundall on any difficulty.,13394.0,Heroic: Jorundall,1
+4149,4149,0.0,13394.0,Heroic: Jorundall,15307.0,Island Expeditions,72420.0,,Achieve victory in an expedition to Jorundall on Heroic difficulty or higher.,13395.0,Mythic: Jorundall,1
+4150,4150,0.0,13395.0,Mythic: Jorundall,15307.0,Island Expeditions,72422.0,,Achieve victory in an expedition to Jorundall on Mythic difficulty.,,,1
+4151,4151,0.0,13396.0,Havenswood,15307.0,Island Expeditions,72424.0,,Achieve victory in an expedition to Havenswood on any difficulty.,13397.0,Heroic: Havenswood,1
+4152,4152,0.0,13397.0,Heroic: Havenswood,15307.0,Island Expeditions,72426.0,,Achieve victory in an expedition to Havenswood on Heroic difficulty or higher.,13398.0,Mythic: Havenswood,1
+4153,4153,0.0,13398.0,Mythic: Havenswood,15307.0,Island Expeditions,72428.0,,Achieve victory in an expedition to Havenswood on Mythic difficulty.,,,1
+4154,4154,0.0,13399.0,Jorundall Justice,15307.0,Island Expeditions,72434.0,,Achieve victory in an expedition to Jorundall in PvP.,,,1
+4155,4155,0.0,13400.0,Havenswood Hero,15307.0,Island Expeditions,72436.0,,Achieve victory in an expedition to Havenswood in PvP.,,,1
+4156,4156,0.0,13401.0,I Got Next!,15286.0,Battle Raid,75506.0,,Defeat High Tinker Mekkatorque in the Battle of Dazar'alor after defeating the Blingtron MK2 on Normal Difficulty or higher.,,,1
+4159,4159,0.0,13410.0,Snow Fun Allowed,15286.0,Battle Raid,72470.0,,Build a Frosty Snowmon then destroy it before defeating Lady Jaina Proudmoore in the Battle of Dazar'alor on Normal Difficulty or higher.,,,1
+4160,4160,0.0,13414.0,Crucible of Storms,15286.0,Battle Raid,72460.0,,Defeat the following bosses within Crucible of Storms.,,,1
+4161,4161,0.0,13416.0,Mythic: The Restless Cabal,15286.0,Battle Raid,72466.0,,Defeat the Restless Cabal in Crucible of Storms on Mythic difficulty.,,,1
+4162,4162,0.0,13417.0,"Mythic: Uu'nat, Harbinger of the Void",15286.0,Battle Raid,72468.0,,"Defeat Uu'nat, Harbinger of the Void in Crucible of Storms on Mythic difficulty.",,,1
+4165,4165,0.0,13420.0,Crucible of Storms Guild Run,15300.0,Battle Raid,72476.0,,"Defeat the bosses of Crucible of Storms on Normal difficulty or higher, while in a guild group.",,,1
+4166,4166,0.0,13421.0,"Mythic: Uu'nat, Harbinger of the Void Guild Run",15300.0,Battle Raid,72481.0,,"Defeat Uu'nat, Harbinger of the Void in Crucible of Storms on Mythic difficulty while in a guild group.",,,1
+4169,4169,0.0,13425.0,"We Got Spirit, How About You?",15286.0,Battle Raid,72513.0,,Defeat King Rastakhan with all Phantoms still alive on Normal difficulty or higher.,,,1
+4172,4172,0.0,13430.0,De Lurker Be'loa,15286.0,Battle Raid,72519.0,,"Fish up the De Lurker Be'loa, then defeat the Stormwall Blockade on Normal Difficulty or higher.",,,1
+4173,4173,0.0,13431.0,Hidden Dragon,15286.0,Battle Raid,72521.0,,Hatch the cloud serpent egg during the Jadefire Masters encounter in the Battle of Dazar'alor on Normal difficulty or higher.,,,1
+4198,4198,0.0,13501.0,Gotta Bounce,15286.0,Battle Raid,79284.0,,Defeat the Restless Cabal in Crucible of Storms after having at least 10 Void Crashes active simultaneously in Normal Difficulty or higher.,,,1
+4199,4199,0.0,13506.0,A Good Eye-dea,15286.0,Battle Raid,79328.0,,"Defeat Uu'nat, Harbinger of the Void in Crucible of Storms without allowing N'Zoth to see your movement in Normal Difficulty or higher.",,,1
+4203,4203,0.0,13545.0,"Go Ahead, Make My Daisy",15285.0,Battle Dungeon,79891.0,,"Defeat the Machinist's Garden in Operation: Mechagon without being struck by ""Hidden"" Flame Cannon, Self-Trimming Hedges, Discom-BOMB-ulator, or Roaring Flame on Mythic Difficulty.",,,1
+4213,4213,0.0,13572.0,The Heart Forge,15417.0,Heart of Azeroth,80257.0,,Unlock the Heart Forge in the repaired Chamber of Heart,,,1
+4215,4215,0.0,13577.0,Crestfall,15307.0,Island Expeditions,80281.0,,Achieve victory in an expedition to Crestfall on any difficulty.,13578.0,Heroic: Crestfall,1
+4216,4216,0.0,13578.0,Heroic: Crestfall,15307.0,Island Expeditions,80283.0,,Achieve victory in an expedition to Crestfall on Heroic difficulty or higher.,13579.0,Mythic: Crestfall,1
+4217,4217,0.0,13579.0,Mythic: Crestfall,15307.0,Island Expeditions,80285.0,,Achieve victory in an expedition to Crestfall on Mythic difficulty.,,,1
+4218,4218,0.0,13580.0,Crestfallen,15307.0,Island Expeditions,80287.0,,Achieve victory in an expedition to Crestfall in PvP.,,,1
+4219,4219,0.0,13581.0,Snowblossom Village,15307.0,Island Expeditions,80289.0,,Achieve victory in an expedition to Snowblossom Village on any difficulty.,13582.0,Heroic: Snowblossom Village,1
+4220,4220,0.0,13582.0,Heroic: Snowblossom Village,15307.0,Island Expeditions,80291.0,,Achieve victory in an expedition to Snowblossom Village on Heroic difficulty or higher.,13583.0,Mythic: Snowblossom Village,1
+4221,4221,0.0,13583.0,Mythic: Snowblossom Village,15307.0,Island Expeditions,80293.0,,Achieve victory in an expedition to Snowblossom Village on Mythic difficulty.,,,1
+4222,4222,0.0,13584.0,Snowblossom Scrapper,15307.0,Island Expeditions,80295.0,,Achieve victory in an expedition to Snowblossom Village in PvP.,,,1
+4224,4224,0.0,13624.0,Keep DPS-ing and Nobody Explodes,15285.0,Battle Dungeon,80462.0,,Prevent the destruction of all non-robotic life on Azeroth on Mythic difficulty in Operation: Mechagon.,,,1
+4225,4225,0.0,13628.0,Intro to Marine Biology,15286.0,Battle Raid,80488.0,,Defeat the Blackwater Behemoth in The Eternal Palace after collecting 50 samples of sea life from within the Darkest Depths on Normal Difficulty or higher.,,,1
+4226,4226,0.0,13629.0,Simple Geometry,15286.0,Battle Raid,80494.0,,Defeat Lady Ashvane in The Eternal Palace after having each cast of Arcing Azerite pass through her on Normal difficulty or higher.,,,1
+4229,4229,0.0,13633.0,If It Pleases the Court,15286.0,Battle Raid,80519.0,,"Perform various emotes to earn Queen Azshara's Favor in the Eternal Palace, then defeat The Queen's Court on Normal Difficulty or higher.",,,1
+4240,4240,0.0,13684.0,You and What Army?,15286.0,Battle Raid,80577.0,,Defeat Abyssal Commander Sivara in The Eternal Palace while all three of her lieutenants are alive and engaged in the fight on Normal difficulty or higher.,,,1
+4245,4245,0.0,13698.0,Clean Up On Aisle Mechagon,15285.0,Battle Dungeon,80775.0,,Defeat Gunker in Operation: Mechagon after rescuing 5 Helpless Critters on Mythic Difficulty.,,,1
+4252,4252,0.0,13706.0,Stay Positive,15285.0,Battle Dungeon,80968.0,,Defeat King Gobbamak in Operation: Mechagon while the Sacred Gear is charged in Mythic Difficulty.,,,1
+4258,4258,0.0,13716.0,Lactose Intolerant,15286.0,Battle Raid,81017.0,,Defeat Za'qul in the Eternal Palace after killing ten Twinklehoof Bovine on Normal difficulty or higher.,,,1
+4259,4259,0.0,13718.0,The Grand Reception,15286.0,Battle Raid,81013.0,,Defeat the following bosses in The Eternal Palace.,,,1
+4260,4260,0.0,13719.0,Depths of the Devoted,15286.0,Battle Raid,81026.0,,Defeat the following bosses in The Eternal Palace.,,,1
+4263,4263,0.0,13723.0,"M.C., Hammered",15285.0,Battle Dungeon,82020.0,,Defeat the Tussle Tonks in Operation: Mechagon after Deuce Mecha-Buffer has been hit with a Piston Smasher on Mythic Difficulty.,,,1
+4264,4264,0.0,13724.0,A Smack of Jellyfish,15286.0,Battle Raid,81861.0,,Defeat Orgozoa in the Hatchery in The Eternal Palace after incubating a baby Zoatroid on Normal Difficulty or higher.,,,1
+4265,4265,0.0,13725.0,The Circle of Stars,15286.0,Battle Raid,81030.0,,Defeat the following Bosses in The Eternal Palace.,,,1
+4266,4266,0.0,13726.0,Mythic: Abyssal Commander Sivara,15286.0,Battle Raid,81033.0,,Defeat Abyssal Commander Sivara in The Eternal Palace on Mythic difficulty.,,,1
+4267,4267,0.0,13727.0,Mythic: Radiance of Azshara,15286.0,Battle Raid,81035.0,,Defeat Radiance of Azshara in The Eternal Palace on Mythic difficulty.,,,1
+4268,4268,0.0,13728.0,Mythic: Blackwater Behemoth,15286.0,Battle Raid,81037.0,,Defeat Blackwater Behemoth in The Eternal Palace on Mythic difficulty.,,,1
+4269,4269,0.0,13729.0,Mythic: Lady Ashvane,15286.0,Battle Raid,81039.0,,Defeat Lady Ashvane in The Eternal Palace on Mythic difficulty.,,,1
+4270,4270,0.0,13730.0,Mythic: Orgozoa,15286.0,Battle Raid,81041.0,,Defeat Orgozoa in The Eternal Palace on Mythic difficulty.,,,1
+4271,4271,0.0,13731.0,Mythic: The Queen's Court,15286.0,Battle Raid,81043.0,,Defeat The Queen's Court in The Eternal Palace on Mythic difficulty.,,,1
+4272,4272,0.0,13732.0,Mythic: Za'qul,15286.0,Battle Raid,81045.0,,Defeat Za'qul in The Eternal Palace on Mythic difficulty.,,,1
+4273,4273,0.0,13733.0,Mythic: Queen Azshara,15286.0,Battle Raid,81047.0,,Defeat Queen Azshara in The Eternal Palace on Mythic difficulty.,,,1
+4274,4274,0.0,13734.0,The Eternal Palace Guild Run,15300.0,Battle Raid,81060.0,,"Defeat the bosses The Eternal Palace on Normal difficulty or higher, while in a guild group.",,,1
+4275,4275,0.0,13735.0,Heroic: War is Hell,15308.0,War Effort,81049.0,,Complete the Battle for Stromgarde on Heroic Difficulty.,,,1
+4276,4276,0.0,13737.0,Heroic: War is Hell,15308.0,War Effort,81051.0,,Complete the Battle for Stromgarde on Heroic Difficulty.,,,1
+4277,4277,0.0,13738.0,Heroic: Tour of War,15308.0,War Effort,81053.0,,Defeat the following enemy commanders in the Battle for Stromgarde on heroic difficulty:,,,1
+4278,4278,0.0,13739.0,Heroic: Tour of War,15308.0,War Effort,81069.0,,Defeat the following enemy commanders in the Battle for Stromgarde on heroic difficulty:,,,1
+4279,4279,0.0,13740.0,Mythic: Queen Azshara Guild Run,15300.0,Battle Raid,81076.0,,Defeat Queen Azshara in The Eternal Palace on Mythic difficulty while in a guild group.,,,1
+4301,4301,0.0,13767.0,Fun Run,15286.0,Battle Raid,81853.0,,Defeat Radiance of Azshara in The Eternal Palace after running 6 consecutive complete laps around her arena without falling into the water on Normal difficulty or higher.,,,1
+4302,4302,0.0,13768.0,The Best of Us,15286.0,Battle Raid,81244.0,,Defeat Queen Azshara in The Eternal Palace with one player still alive who is currently affected by Essence of Azeroth on Normal difficulty or higher.,,,1
+4303,4303,0.0,13769.0,Power Up,15417.0,Heart of Azeroth,81264.0,,Infuse the Heart of Azeroth with any Heart of Azeroth Essence at rank 2 or higher.,13770.0,Power Creep,1
+4304,4304,0.0,13770.0,Power Creep,15417.0,Heart of Azeroth,81266.0,,Infuse the Heart of Azeroth with any Heart of Azeroth Essence at rank 3 or higher.,13771.0,Power Is Beautiful,1
+4305,4305,0.0,13771.0,Power Is Beautiful,15417.0,Heart of Azeroth,81268.0,,Infuse the Heart of Azeroth with any Heart of Azeroth Essence at rank 4.,,,1
+4306,4306,0.0,13772.0,Essence Essentials,15417.0,Heart of Azeroth,81270.0,,Infuse the Heart of Azeroth with all available Essences from the Rise of Azshara update for any of your roles.,13773.0,Essence Gains,1
+4307,4307,0.0,13773.0,Essence Gains,15417.0,Heart of Azeroth,81277.0,,Infuse the Heart of Azeroth with all available Essences from the Rise of Azshara update at rank 2 or higher for any of your roles.,13775.0,Essence Overload,1
+4308,4308,0.0,13775.0,Essence Overload,15417.0,Heart of Azeroth,81286.0,,Infuse the Heart of Azeroth with all available Essences from the Rise of Azshara update at rank 3 or higher for any of your roles.,,,1
+4310,4310,0.0,13777.0,My Heart Container is Full,15417.0,Heart of Azeroth,81293.0,,Apply an Essence of rank 3 or higher into every slot of the Heart of Azeroth.,,,1
+4322,4322,0.0,13893.0,Operation: Mechagon Guild Run,15299.0,Battle Dungeon,82130.0,,Defeat King Mechagon in Operation: Mechagon on Mythic difficulty while in a guild group.,,,1
+4339,4339,0.0,13990.0,"You Can Pet the Dog, But...",15286.0,Battle Raid,82759.0,,"Defeat Shad'har the Insatiable in Ny'alotha, the Waking City after having everyone /pet him on Normal difficulty or higher.",,,1
+4340,4340,0.0,13998.0,Pure of Heart,15417.0,Heart of Azeroth,82818.0,,Infuse the Heart of Azeroth with all available Essences from the Visions of N'Zoth update for any of your roles.,,,1
+4341,4341,0.0,13999.0,How? Isn't it Obelisk?,15286.0,Battle Raid,82825.0,,"Defeat Ra-den in Ny'alotha, the Waking City after destroying 2 obelisks with Unstable Void on Normal difficulty or higher.",,,1
+4342,4342,0.0,14008.0,Mana Sponge,15286.0,Battle Raid,83058.0,,"Defeat Maut in Ny'alotha, the Waking City after defeating a Forbidden Manifestation on Normal difficulty or higher.",,,1
+4343,4343,0.0,14019.0,Smoke Test,15286.0,Battle Raid,82862.0,,"Defeat Wrathion in Ny'alotha, the Waking City after defeating 10 Crackling Shards within 3 seconds of each other on Normal difficulty or higher.",,,1
+4344,4344,0.0,14023.0,Realizing Your Potential,15286.0,Battle Raid,82885.0,,"Defeat the Hivemind in Ny'alotha, the Waking City after defeating 3 Evolved Specimen on Normal difficulty or higher.",,,1
+4345,4345,0.0,14024.0,Buzzer Beater,15286.0,Battle Raid,82886.0,,"Defeat Dark Inquisitor Xanesh in Ny'alotha, the Waking City after safely eliminating a Void Orb with less than 3 seconds remaining on Voidwoken 3 times on Normal difficulty or higher.",,,1
+4346,4346,0.0,14026.0,Temper Tantrum,15286.0,Battle Raid,82910.0,,"Defeat Drest'agath in Ny'alotha, the Waking City after triggering Throes of Agony twice within 60 seconds on Normal difficulty or higher.",,,1
+4347,4347,0.0,14037.0,Phase 3: Prophet,15286.0,Battle Raid,83074.0,,"Defeat the Prophet Skitra in Ny'alotha, the Waking City after defeating three Disciples of the Prophet on Normal difficulty or higher.",,,1
+4348,4348,0.0,14038.0,Bloody Mess,15286.0,Battle Raid,83076.0,,"Defeat Il'gynoth, Corruption Reborn in Ny'alotha, the Waking City after defeating 10 Bloods of Ny'alotha in under 3 seconds on Normal difficulty or higher.",,,1
+4349,4349,0.0,14039.0,"Ny'alotha, the Waking City Guild Run",15300.0,Battle Raid,83078.0,,"Defeat the bosses of Ny'alotha, the Waking City on Normal difficulty or higher, while in a guild group.",,,1
+4350,4350,0.0,14040.0,Mythic: N'Zoth the Corruptor Guild Run,15300.0,Battle Raid,83091.0,,"Defeat N'Zoth the Corruptor in Ny'alotha, the Waking City on Mythic Difficutly while in a guild group.",,,1
+4351,4351,0.0,14041.0,"Mythic: Wrathion, the Black Emperor",15286.0,Battle Raid,83175.0,,"Defeat Wrathion, the Black Emperor in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4352,4352,0.0,14043.0,Mythic: Maut,15286.0,Battle Raid,83179.0,,"Defeat Maut in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4353,4353,0.0,14044.0,Mythic: The Prophet Skitra,15286.0,Battle Raid,83181.0,,"Defeat the Prophet Skitra in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4354,4354,0.0,14045.0,Mythic: Dark Inquisitor Xanesh,15286.0,Battle Raid,83183.0,,"Defeat the Dark Inquisitor Xanesh in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4355,4355,0.0,14046.0,Mythic: The Hivemind,15286.0,Battle Raid,83185.0,,"Defeat the Hivemind in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4356,4356,0.0,14048.0,Mythic: Shad'har the Insatiable,15286.0,Battle Raid,83187.0,,"Defeat Shad'har the Insatiable in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4357,4357,0.0,14049.0,Mythic: Drest'agath,15286.0,Battle Raid,83189.0,,"Defeat Drest'agath in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4358,4358,0.0,14050.0,Mythic: Vexiona,15286.0,Battle Raid,83191.0,,"Defeat Vexiona in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4359,4359,0.0,14051.0,Mythic: Ra-den the Despoiled,15286.0,Battle Raid,83193.0,,"Defeat Ra-den the Despoiled in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4360,4360,0.0,14052.0,"Mythic: Il'gynoth, Corruption Reborn",15286.0,Battle Raid,83195.0,,"Defeat Il'gynoth, Corruption Reborn in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4361,4361,0.0,14054.0,Mythic: Carapace of N'Zoth,15286.0,Battle Raid,83197.0,,"Defeat Carapace of N'Zoth in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4362,4362,0.0,14055.0,Mythic: N'Zoth the Corruptor,15286.0,Battle Raid,83199.0,,"Defeat N'Zoth the Corruptor in Ny'alotha, the Waking City on Mythic difficulty.",,,1
+4363,4363,0.0,14060.0,Unwavering Resolve,15426.0,Visions of N'Zoth,,,"Upgrade Ashjra'kamas, Shroud of Resolve to rank 15.",,,1
+4364,4364,0.0,14061.0,We Have the Technology,15426.0,Visions of N'Zoth,83459.0,,Purchase all research items in the Titanic Research Archive.,,,1
+4365,4365,0.0,14062.0,Horrific Vision of Stormwind,15426.0,Visions of N'Zoth,83225.0,,Defeat Alleria in the Horrific Vision of Stormwind.,14064.0,The Even More Horrific Vision of Stormwind,1
+4366,4366,0.0,14063.0,Horrific Vision of Orgrimmar,15426.0,Visions of N'Zoth,83227.0,,Defeat Thrall in the Horrific Vision of Orgrimmar.,14065.0,The Even More Horrific Vision of Orgrimmar,1
+4367,4367,0.0,14064.0,The Even More Horrific Vision of Stormwind,15426.0,Visions of N'Zoth,83229.0,,Complete all objectives in the Horrific Vision of Stormwind in a single visit.,14066.0,The Most Horrific Vision of Stormwind,1
+4368,4368,0.0,14065.0,The Even More Horrific Vision of Orgrimmar,15426.0,Visions of N'Zoth,83231.0,,Complete all objectives in the Horrific Vision of Orgrimmar in a single visit.,14067.0,The Most Horrific Vision of Orgrimmar,1
+4369,4369,0.0,14066.0,The Most Horrific Vision of Stormwind,15426.0,Visions of N'Zoth,83233.0,,Complete all objectives in the Horrific Vision of Stormwind in a single visit and with all 5 Faceless Masks active.,,,1
+4370,4370,0.0,14067.0,The Most Horrific Vision of Orgrimmar,15426.0,Visions of N'Zoth,83235.0,,Complete all objectives in the Horrific Vision of Orgrimmar in a single visit and with all 5 Faceless Masks active.,,,1
+4375,4375,0.0,14139.0,Total Annihilation,15286.0,Battle Raid,83407.0,,"Defeat Vexiona in Ny'alotha, the Waking City after allowing every player to be hit by Annihilation at least 30 times on Normal difficulty or higher.",,,1
+4377,4377,0.0,14147.0,Cleansing Treatment,15286.0,Battle Raid,83513.0,,"Defeat the Carapace of N'Zoth in Ny'alotha, the Waking City after defeating all Synthesis Growths within 10 seconds on Normal difficulty or higher.",,,1
+4378,4378,0.0,14148.0,It's Not A Cult,15286.0,Battle Raid,84545.0,,"Defeat N'Zoth the Corruptor in Ny'alotha, the Waking City after all players have accepted the Gift of N'Zoth on Normal difficulty or higher",,,1
+4379,4379,0.0,14149.0,Heroic: War for the Shore,15308.0,War Effort,83529.0,,Complete the Battle for Darkshore on Heroic Difficulty.,,,1
+4380,4380,0.0,14150.0,Heroic: War for the Shore,15308.0,War Effort,83531.0,,Complete the Battle for Darkshore on Heroic Difficulty.,,,1
+4390,4390,0.0,14162.0,Horrific Masquerade,15426.0,Visions of N'Zoth,83596.0,,Obtain all 5 Faceless Masks.,,,1
+4391,4391,0.0,14165.0,Masked Soliloquy,15426.0,Visions of N'Zoth,83613.0,,Complete all objectives in any Horrific Vision with any Faceless Mask active.,14166.0,Masked Duet,1
+4392,4392,0.0,14166.0,Masked Duet,15426.0,Visions of N'Zoth,83615.0,,Complete all objectives in any Horrific Vision with any 2 Faceless Masks active.,14167.0,Masked Trio,1
+4393,4393,0.0,14167.0,Masked Trio,15426.0,Visions of N'Zoth,83617.0,,Complete all objectives in any Horrific Vision with any 3 Faceless Masks active.,14168.0,Masked Quartet,1
+4394,4394,0.0,14168.0,Masked Quartet,15426.0,Visions of N'Zoth,83619.0,,Complete all objectives in any Horrific Vision with any 4 Faceless Masks active.,14169.0,Symphony of Masks,1
+4395,4395,0.0,14169.0,Symphony of Masks,15426.0,Visions of N'Zoth,83621.0,,Complete all objectives in any Horrific Vision with all 5 Faceless Masks active.,,,1
+4396,4396,0.0,14170.0,Thanks For The Mementos,15426.0,Visions of N'Zoth,83623.0,,Obtain 1000 Corrupted Mementos.,14171.0,Memento Mori,1
+4397,4397,0.0,14171.0,Memento Mori,15426.0,Visions of N'Zoth,83625.0,,Obtain 10000 Corrupted Mementos.,14172.0,A Monumental Amount of Mementos,1
+4398,4398,0.0,14172.0,A Monumental Amount of Mementos,15426.0,Visions of N'Zoth,83627.0,,Obtain 50000 Corrupted Mementos.,14173.0,A Mountain of Mementos,1
+4399,4399,0.0,14173.0,A Mountain of Mementos,15426.0,Visions of N'Zoth,83666.0,,Obtain 100000 Corrupted Mementos.,,,1
+4404,4404,0.0,14193.0,Vision of Destiny,15286.0,Battle Raid,84588.0,,"Defeat the following bosses in Ny'alotha, the Waking City.",,,1
+4405,4405,0.0,14194.0,Halls of Devotion,15286.0,Battle Raid,84592.0,,"Defeat the following bosses in Ny'alotha, the Waking City.",,,1
+4406,4406,0.0,14195.0,Gift of Flesh,15286.0,Battle Raid,84597.0,,"Defeat the following bosses in Ny'alotha, the Waking City.",,,1
+4407,4407,0.0,14196.0,The Waking Dream,15286.0,Battle Raid,84601.0,,"Defeat the following bosses in Ny'alotha, the Waking City.",,,1

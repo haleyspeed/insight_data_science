@@ -85,4 +85,5 @@ I built and tested the model using the scripts in the `scripts` folder. I then c
   - Database functions for the SubScript mySQL database
 11_recommendation_predictor.ipynb
   - Uses the original time series random forest model to determine return on investment for recommended content
+  
 © 2020 GitHub, Inc.

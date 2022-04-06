@@ -78,7 +78,7 @@ multidict==4.7.6
 mysql-connector==2.2.9
 nbconvert==5.6.1
 nbformat==5.0.6
-notebook==6.0.3
+notebook==6.4.10
 numba==0.50.0
 numpy==1.18.4
 numpydoc==0.9.2

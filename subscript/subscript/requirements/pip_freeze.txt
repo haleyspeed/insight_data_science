@@ -95,7 +95,7 @@ plotly==4.7.1
 ply==3.11
 prometheus-client==0.7.1
 prompt-toolkit==3.0.5
-protobuf==3.12.1
+protobuf==3.18.3
 psutil==5.7.0
 ptyprocess==0.6.0
 py-spy==0.3.3
